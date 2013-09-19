@@ -1,0 +1,22 @@
+﻿<html>
+	<head>
+		<script type="text/javascript">
+			function nextClicked() {
+				var r = document.getElementById("result");
+				var n = document.getElementById("nameEdit");
+				// ha the sample test found an issue - innerText works in chrome but not ff, so using innerHTML
+				r.innerHTML = n.value;
+				//r.innerText = n.value;
+			}
+		</script>
+	</head>
+<body>
+	<form id="loginForm">
+		<input name="nameEdit" id="nameEdit" type="text" />
+		<input name="ageEdit" type="text" />
+		<input name="relationEdit" type="text" />
+		<input name="biographyNext" type="button" value="Next" onclick="nextClicked()" />
+	</form>
+	<div id="result" name="result"></div>
+</body>
+</html>
