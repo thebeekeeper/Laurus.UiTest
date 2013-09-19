@@ -19,9 +19,9 @@ namespace AppiumSample
 			desiredCaps.SetCapability("app", "sauce-storage:fd.zip");
 			desiredCaps.SetCapability("app-package", "com.example.FdMobile");
 			desiredCaps.SetCapability("app-activity", ".SplashActivity");
-			desiredCaps.SetCapability("username", "thebeekeeper");
+			desiredCaps.SetCapability("username", "");
 			// the key is case sensitive!
-			desiredCaps.SetCapability("accessKey", "54087e46-dd23-453c-80e9-f6db35a4eeae");
+			desiredCaps.SetCapability("accessKey", "");
 			desiredCaps.SetCapability("deviceType", "phone");
 			var uri = "http://ondemand.saucelabs.com:80/wd/hub";
 			_driver = new RemoteWebDriver(new Uri(uri), desiredCaps, TimeSpan.FromMinutes(5));
