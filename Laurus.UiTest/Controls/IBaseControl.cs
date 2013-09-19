@@ -8,7 +8,6 @@ namespace Laurus.UiTest.Controls
 {
 	public interface IBaseControl
 	{
-		// TODO: don't return anything from this
 		void Find(SelectorBase selector);
 	}
 }

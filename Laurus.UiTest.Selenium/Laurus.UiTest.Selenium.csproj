@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Clickable.cs" />
     <Compile Include="Editable.cs" />
-    <Compile Include="PageBuilder.cs" />
     <Compile Include="SeleniumTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

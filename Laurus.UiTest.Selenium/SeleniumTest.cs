@@ -20,8 +20,7 @@ namespace Laurus.UiTest.Selenium
 		public SeleniumTest()
 		{
 			_container = new WindsorContainer();
-			// TODO: get rid of service locator
-			//_container.Register(Component.For<IWindsorContainer>().Instance(_container).LifestyleSingleton());
+
 			// TODO: putting the controls in windsor gives some weird null ref exception when resolving a page
 			//_container.Register(Component.For<IEditable>().ImplementedBy<Editable>().LifestyleTransient());
 			//_container.Register(Component.For<IClickable>().ImplementedBy<Clickable>().LifestyleTransient());
@@ -42,10 +41,6 @@ namespace Laurus.UiTest.Selenium
 			_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
 		}
 
-		//public SeleniumTest(IWebDriver driver)
-		//{
-		//}
-
 		T ITest.GetPage<T>()
 		{
 			return _container.Resolve<T>();
@@ -56,7 +51,6 @@ namespace Laurus.UiTest.Selenium
 			_driver.Navigate().GoToUrl(target);
 		}
 
-		//		private readonly IPageBuilder _pageBuilder;
 		private readonly IWebDriver _driver;
 		private readonly IWindsorContainer _container;
 	}

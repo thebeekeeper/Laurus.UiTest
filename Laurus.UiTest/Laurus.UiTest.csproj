@@ -51,12 +51,10 @@
     <Compile Include="Controls\IEditable.cs" />
     <Compile Include="IControlRegistry.cs" />
     <Compile Include="IPage.cs" />
-    <Compile Include="IPageBuilder.cs" />
     <Compile Include="LocatorAttribute.cs" />
     <Compile Include="PageInterceptor.cs" />
     <Compile Include="SelectorBase.cs" />
     <Compile Include="ITest.cs" />
-    <Compile Include="Locators\NameAttribute.cs" />
     <Compile Include="Locators\NameSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
