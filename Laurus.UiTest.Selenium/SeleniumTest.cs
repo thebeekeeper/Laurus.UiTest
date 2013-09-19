@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Remote;
 
 namespace Laurus.UiTest.Selenium
 {
@@ -17,7 +18,10 @@ namespace Laurus.UiTest.Selenium
 	{
 		string ITest.TargetApplication { get; set; }
 
-		public SeleniumTest()
+		public SeleniumTest() : this(new Dictionary<string, object>())
+		{ }
+
+		public SeleniumTest(Dictionary<string, object> parameters)
 		{
 			_container = new WindsorContainer();
 
@@ -27,13 +31,16 @@ namespace Laurus.UiTest.Selenium
 
 			// need to register all types that inherit from IPage with interceptor
 			_container.Register(
-			  Types.FromAssemblyInDirectory(new AssemblyFilter(".", "Sample*"))
+			  Types.FromAssemblyInDirectory(new AssemblyFilter(".", "Mobile*"))
 			  .Where(t => typeof(IPage).IsAssignableFrom(t))
 			  //.WithService.DefaultInterfaces()
 			 .Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
 			_container.Register(Component.For<PageInterceptor>());
 
-			_driver = new FirefoxDriver();
+			var desiredCaps = new DesiredCapabilities(parameters);
+
+			//_driver = new FirefoxDriver();
+			_driver = new RemoteWebDriver(new Uri("http://4723/wd/hub"), desiredCaps, TimeSpan.FromMinutes(5));
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
