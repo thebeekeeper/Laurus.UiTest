@@ -11,16 +11,16 @@ namespace AppiumSample.Pages
 {
 	public class BioPage : IPage
 	{
-		[Locator("nameEdit")]
+		[Locator(Name = "nameEdit")]
 		public IEditable Name {get;set;}
 
-		[Locator("Age")]
+		[Locator(Name = "Age")]
 		public IEditable Age { get; set; }
 
-		[Locator("relationEdit")]
+		[Locator(Name = "relationEdit")]
 		public IEditable RelationToInjured { get; set; }
 
-		[Locator("biographyNext")]
+		[Locator(Name = "biographyNext")]
 		public IClickable Next { get; set; }
 	}
 }
