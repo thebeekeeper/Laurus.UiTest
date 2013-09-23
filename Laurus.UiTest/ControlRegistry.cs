@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest
 {
+	// TODO: this might not be necessary any longer since i think i figured out
+	// what was causing the null ref exception
 	public class ControlRegistry : IControlRegistry
 	{
 		public ControlRegistry(object[] ctorParams)

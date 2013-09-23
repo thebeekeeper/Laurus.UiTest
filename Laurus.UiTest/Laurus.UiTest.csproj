@@ -50,8 +50,10 @@
     <Compile Include="Controls\IClickable.cs" />
     <Compile Include="Controls\IEditable.cs" />
     <Compile Include="IControlRegistry.cs" />
+    <Compile Include="ILocator.cs" />
     <Compile Include="IPage.cs" />
     <Compile Include="LocatorAttribute.cs" />
+    <Compile Include="MethodInfoExtensions.cs" />
     <Compile Include="PageInterceptor.cs" />
     <Compile Include="SelectorBase.cs" />
     <Compile Include="ITest.cs" />

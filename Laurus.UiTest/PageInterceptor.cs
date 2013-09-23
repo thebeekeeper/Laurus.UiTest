@@ -15,7 +15,6 @@ namespace Laurus.UiTest
 	{
 		public PageInterceptor(IControlRegistry controls)
 		{
-			//_container = container;
 			_controls = controls;
 		}
 
@@ -32,7 +31,6 @@ namespace Laurus.UiTest
 					throw new Exception("Invalid control");
 				}
 				var locatorAttr = control.GetCustomAttribute<LocatorAttribute>();
-				//var controlImpl = _container.Resolve(control.PropertyType);
 				var controlType = control.PropertyType;
 				var selector = new NameSelector(locatorAttr.Name);
 				var controlImpl = _controls.GetControl(controlType, selector);
@@ -45,11 +43,12 @@ namespace Laurus.UiTest
 			}
 		}
 
-		//private readonly IWindsorContainer _container;
+		// TODO: this is essentially a service locator - not sure how to get rid of it
 		private readonly IControlRegistry _controls;
 	}
 
 	// thinking about dynamically creating control implementations.  maybe later
+	// - would probably have to be driver implementation specific
 	//public class ControlBuilder
 	//{
 	//	public T BuildControl<T>(string locator) where T : IBaseControl
@@ -57,17 +56,4 @@ namespace Laurus.UiTest
 	//		return default(T);
 	//	}
 	//}
-
-	public static class MethodInfoExtensions
-	{
-		public static bool IsGetter(this MethodInfo methodInfo)
-		{
-			return methodInfo.Name.StartsWith("get_");
-		}
-
-		public static bool IsSetter(this MethodInfo methodInfo)
-		{
-			return methodInfo.Name.StartsWith("set_");
-		}
-	}
 }
