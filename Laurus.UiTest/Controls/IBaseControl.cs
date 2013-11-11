@@ -9,5 +9,7 @@ namespace Laurus.UiTest.Controls
 	public interface IBaseControl
 	{
 		void Find(SelectorBase selector);
+
+		bool IsVisible();
 	}
 }

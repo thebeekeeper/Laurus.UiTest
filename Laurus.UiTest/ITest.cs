@@ -25,5 +25,10 @@ namespace Laurus.UiTest
 		/// </summary>
 		/// <param name="target"></param>
 		void Navigate(string target);
+
+		/// <summary>
+		/// Ends the tests and closes any associated target app/browser
+		/// </summary>
+		void Quit();
 	}
 }

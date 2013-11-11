@@ -50,6 +50,11 @@ namespace Laurus.UiTest.Selenium
 			return _driver.FindElement(_finder);
 		}
 
+		bool IBaseControl.IsVisible()
+		{
+			return GetNative().Displayed;
+		}
+
 		private IWebDriver _driver;
 		private IWebElement _element;
 		private By _finder;

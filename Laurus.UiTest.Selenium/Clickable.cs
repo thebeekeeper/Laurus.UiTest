@@ -28,6 +28,12 @@ namespace Laurus.UiTest.Selenium
 			_by = By.Name(name);
 		}
 
+		bool IBaseControl.IsVisible()
+		{
+			_element = _driver.FindElement(_by);
+			return _element.Displayed;
+		}
+
 		IWebElement _element;
 		By _by;
 		IWebDriver _driver;

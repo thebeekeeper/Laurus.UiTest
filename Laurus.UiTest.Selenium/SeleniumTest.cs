@@ -31,7 +31,8 @@ namespace Laurus.UiTest.Selenium
 
 			// need to register all types that inherit from IPage with interceptor
 			_container.Register(
-			  Types.FromAssemblyInDirectory(new AssemblyFilter(".", "Mobile*"))
+			  //Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*Mobile*"))
+			  Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
 			  .Where(t => typeof(IPage).IsAssignableFrom(t))
 			  //.WithService.DefaultInterfaces()
 			 .Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
@@ -56,6 +57,11 @@ namespace Laurus.UiTest.Selenium
 		void ITest.Navigate(string target)
 		{
 			_driver.Navigate().GoToUrl(target);
+		}
+
+		void ITest.Quit()
+		{
+			_driver.Quit();
 		}
 
 		private readonly IWebDriver _driver;
