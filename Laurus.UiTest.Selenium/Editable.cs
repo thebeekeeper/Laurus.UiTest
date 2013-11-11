@@ -32,7 +32,17 @@ namespace Laurus.UiTest.Selenium
 
 		void IBaseControl.Find(SelectorBase selector)
 		{
-			_finder = By.Name(((NameSelector)selector).Name);
+			var isName = (selector as NameSelector) != null;
+			var isTagName = (selector as TagNameSelector) != null;
+
+			if (isName)
+			{
+				_finder = By.Name(((NameSelector)selector).Name);
+			}
+			else if(isTagName)
+			{
+				_finder = By.TagName(((TagNameSelector)selector).TagName);
+			}
 		}
 
 		IWebElement GetNative()

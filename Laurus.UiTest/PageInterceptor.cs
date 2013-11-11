@@ -32,7 +32,15 @@ namespace Laurus.UiTest
 				}
 				var locatorAttr = control.GetCustomAttribute<LocatorAttribute>();
 				var controlType = control.PropertyType;
-				var selector = new NameSelector(locatorAttr.Name);
+				SelectorBase selector = null;
+				if (String.IsNullOrEmpty(locatorAttr.Name) == false)
+				{
+					selector = new NameSelector(locatorAttr.Name);
+				}
+				else if (String.IsNullOrEmpty(locatorAttr.TagName) == false)
+				{
+					selector = new TagNameSelector(locatorAttr.TagName);
+				}
 				var controlImpl = _controls.GetControl(controlType, selector);
 
 				invocation.ReturnValue = controlImpl;

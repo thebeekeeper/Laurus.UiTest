@@ -53,6 +53,7 @@
     <Compile Include="ILocator.cs" />
     <Compile Include="IPage.cs" />
     <Compile Include="LocatorAttribute.cs" />
+    <Compile Include="Locators\TagNameSelector.cs" />
     <Compile Include="MethodInfoExtensions.cs" />
     <Compile Include="PageInterceptor.cs" />
     <Compile Include="SelectorBase.cs" />

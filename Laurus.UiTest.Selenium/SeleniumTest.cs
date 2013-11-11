@@ -18,10 +18,10 @@ namespace Laurus.UiTest.Selenium
 	{
 		string ITest.TargetApplication { get; set; }
 
-		public SeleniumTest() : this(new Dictionary<string, object>())
+		public SeleniumTest() : this(new Dictionary<string, object>(), string.Empty)
 		{ }
 
-		public SeleniumTest(Dictionary<string, object> parameters)
+		public SeleniumTest(Dictionary<string, object> parameters, string testHost)
 		{
 			_container = new WindsorContainer();
 
@@ -40,7 +40,7 @@ namespace Laurus.UiTest.Selenium
 			var desiredCaps = new DesiredCapabilities(parameters);
 
 			//_driver = new FirefoxDriver();
-			_driver = new RemoteWebDriver(new Uri("http://4723/wd/hub"), desiredCaps, TimeSpan.FromMinutes(5));
+			_driver = new RemoteWebDriver(new Uri(String.Format("http://{0}:4723/wd/hub", testHost)), desiredCaps, TimeSpan.FromMinutes(5));
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
