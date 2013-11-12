@@ -13,7 +13,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 
 		public WebFixture()
 		{
-			Test = new SeleniumTest();
+			Test = new SeleniumTest(new Dictionary<string, object>(), new StartupParameters() { BrowserType = BrowserType.Firefox });
 		}
 
 		public void StartBrowser()

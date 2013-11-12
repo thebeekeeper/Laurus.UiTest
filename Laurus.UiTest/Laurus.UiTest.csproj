@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StartupParameters.cs" />
     <Compile Include="ControlRegistry.cs" />
     <Compile Include="Controls\IBaseControl.cs" />
     <Compile Include="Controls\IClickable.cs" />

@@ -18,10 +18,7 @@ namespace Laurus.UiTest.Selenium
 	{
 		string ITest.TargetApplication { get; set; }
 
-		public SeleniumTest() : this(new Dictionary<string, object>(), string.Empty)
-		{ }
-
-		public SeleniumTest(Dictionary<string, object> parameters, string testHost)
+		public SeleniumTest(Dictionary<string, object> parameters, StartupParameters startupParams)
 		{
 			_container = new WindsorContainer();
 
@@ -31,18 +28,28 @@ namespace Laurus.UiTest.Selenium
 
 			// need to register all types that inherit from IPage with interceptor
 			_container.Register(
-			  //Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*Mobile*"))
-			  Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
-			  .Where(t => typeof(IPage).IsAssignableFrom(t))
-			  //.WithService.DefaultInterfaces()
-			 .Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
+				Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
+				.Where(t => typeof(IPage).IsAssignableFrom(t))
+				.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
 			_container.Register(Component.For<PageInterceptor>());
 			_container.Register(Component.For<ILocatorFactory>().ImplementedBy<LocatorFactory>());
 
 			var desiredCaps = new DesiredCapabilities(parameters);
 
-			_driver = new FirefoxDriver();
-			//_driver = new RemoteWebDriver(new Uri(String.Format("http://{0}:4723/wd/hub", testHost)), desiredCaps, TimeSpan.FromMinutes(5));
+			switch (startupParams.BrowserType)
+			{
+				case BrowserType.Firefox:
+					_driver = new FirefoxDriver();
+					break;
+				case BrowserType.Chrome:
+					_driver = new ChromeDriver();
+					break;
+				case BrowserType.Remote:
+					_driver = new RemoteWebDriver(new Uri(startupParams.RemoteHost), desiredCaps, TimeSpan.FromMinutes(5));
+					break;
+				default:
+					throw new Exception("Browser type not found");
+			}
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
