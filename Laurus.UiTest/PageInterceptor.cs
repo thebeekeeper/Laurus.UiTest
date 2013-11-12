@@ -13,9 +13,10 @@ namespace Laurus.UiTest
 	[Serializable]
 	public class PageInterceptor : IInterceptor
 	{
-		public PageInterceptor(IControlRegistry controls)
+		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory)
 		{
 			_controls = controls;
+			_locatorFactory = locatorFactory;
 		}
 
 		public void Intercept(IInvocation invocation)
@@ -31,17 +32,19 @@ namespace Laurus.UiTest
 					throw new Exception("Invalid control");
 				}
 				var locatorAttr = control.GetCustomAttribute<LocatorAttribute>();
+				var locator = _locatorFactory.BuildLocator(locatorAttr);
 				var controlType = control.PropertyType;
 				SelectorBase selector = null;
-				if (String.IsNullOrEmpty(locatorAttr.Name) == false)
-				{
-					selector = new NameSelector(locatorAttr.Name);
-				}
-				else if (String.IsNullOrEmpty(locatorAttr.TagName) == false)
-				{
-					selector = new TagNameSelector(locatorAttr.TagName);
-				}
-				var controlImpl = _controls.GetControl(controlType, selector);
+				//if (String.IsNullOrEmpty(locatorAttr.Name) == false)
+				//{
+				//	selector = new NameSelector(locatorAttr.Name);
+				//}
+				//else if (String.IsNullOrEmpty(locatorAttr.TagName) == false)
+				//{
+				//	selector = new TagNameSelector(locatorAttr.TagName);
+				//}
+				//var controlImpl = _controls.GetControl(controlType, selector);
+				var controlImpl = _controls.GetControl(controlType, locator);
 
 				invocation.ReturnValue = controlImpl;
 			}
@@ -53,6 +56,7 @@ namespace Laurus.UiTest
 
 		// TODO: this is essentially a service locator - not sure how to get rid of it
 		private readonly IControlRegistry _controls;
+		private readonly ILocatorFactory _locatorFactory;
 	}
 
 	// thinking about dynamically creating control implementations.  maybe later

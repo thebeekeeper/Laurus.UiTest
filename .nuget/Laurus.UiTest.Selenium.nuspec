@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Pre-beta release</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>UI Automation Testing</tags>
+	  <dependencies>
+		  <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
+	  </dependencies>
+	  <files>
+		  <file src="..\Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
+	  </files>
+  </metadata>
+</package>

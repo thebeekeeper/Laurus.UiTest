@@ -9,5 +9,6 @@ namespace Laurus.UiTest
 	// this should be implemented in driver specific assemblies
 	public abstract class SelectorBase
 	{
+		public abstract ILocator ToLocator();
 	}
 }

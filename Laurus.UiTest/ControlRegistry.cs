@@ -9,6 +9,8 @@ namespace Laurus.UiTest
 {
 	// TODO: this might not be necessary any longer since i think i figured out
 	// what was causing the null ref exception
+	// update: i wish i had written down what was causing it.  either way, removing
+	// the windsor dependency could be nice
 	public class ControlRegistry : IControlRegistry
 	{
 		public ControlRegistry(object[] ctorParams)
@@ -29,6 +31,18 @@ namespace Laurus.UiTest
 				var implType = _controlTypes[controlType];
 				var inst = Activator.CreateInstance(implType, _ctorParams);
 				((IBaseControl)inst).Find(selector);
+				return inst;
+			}
+			throw new Exception("Attempt to build non-existent control");
+		}
+
+		object IControlRegistry.GetControl(Type controlType, ILocator locator)
+		{
+			if (_controlTypes.ContainsKey(controlType))
+			{
+				var implType = _controlTypes[controlType];
+				var inst = Activator.CreateInstance(implType, _ctorParams);
+				((IBaseControl)inst).Find(locator);
 				return inst;
 			}
 			throw new Exception("Attempt to build non-existent control");

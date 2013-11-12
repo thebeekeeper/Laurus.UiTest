@@ -10,6 +10,8 @@ namespace Laurus.UiTest.Controls
 	{
 		void Find(SelectorBase selector);
 
+		void Find(ILocator locator);
+
 		bool IsVisible();
 	}
 }

@@ -13,6 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebApp", "SampleWebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppiumSample", "AppiumSample\AppiumSample.csproj", "{057E0968-5094-4E10-B322-58CBA39FF66D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{08C99D19-CA52-482B-A568-6B335A66E029}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\Laurus.UiTest.nuspec = .nuget\Laurus.UiTest.nuspec
+		.nuget\Laurus.UiTest.Selenium.nuspec = .nuget\Laurus.UiTest.Selenium.nuspec
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -24,8 +24,9 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			Test.Navigate("file://" + targetPath);
 		}
 
-		public void Dispose()
+		void IDisposable.Dispose()
 		{
+			Test.Quit();
 		}
 	}
 }

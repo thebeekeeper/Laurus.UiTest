@@ -8,5 +8,7 @@ namespace Laurus.UiTest
 {
 	public interface ILocator
 	{
+		string Name { get; set; }
+		string Value { get; set; }
 	}
 }

@@ -28,6 +28,11 @@ namespace Laurus.UiTest.Selenium
 			_by = By.Name(name);
 		}
 
+		void IBaseControl.Find(ILocator locator)
+		{
+			this._by = (By)locator;
+		}
+
 		bool IBaseControl.IsVisible()
 		{
 			_element = _driver.FindElement(_by);

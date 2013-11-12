@@ -45,6 +45,11 @@ namespace Laurus.UiTest.Selenium
 			}
 		}
 
+		void IBaseControl.Find(ILocator locator)
+		{
+			this._finder = (By)locator;
+		}
+
 		IWebElement GetNative()
 		{
 			return _driver.FindElement(_finder);

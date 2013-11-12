@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest.Locators
 {
-	public class NameSelector : SelectorBase
+	public abstract class NameSelector : SelectorBase
 	{
 		public string Name { get; protected set; }
 

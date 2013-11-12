@@ -37,11 +37,12 @@ namespace Laurus.UiTest.Selenium
 			  //.WithService.DefaultInterfaces()
 			 .Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
 			_container.Register(Component.For<PageInterceptor>());
+			_container.Register(Component.For<ILocatorFactory>().ImplementedBy<LocatorFactory>());
 
 			var desiredCaps = new DesiredCapabilities(parameters);
 
-			//_driver = new FirefoxDriver();
-			_driver = new RemoteWebDriver(new Uri(String.Format("http://{0}:4723/wd/hub", testHost)), desiredCaps, TimeSpan.FromMinutes(5));
+			_driver = new FirefoxDriver();
+			//_driver = new RemoteWebDriver(new Uri(String.Format("http://{0}:4723/wd/hub", testHost)), desiredCaps, TimeSpan.FromMinutes(5));
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
