@@ -17,12 +17,12 @@ namespace Laurus.UiTest.Selenium
 
 		void IBaseControl.Find(ILocator locator)
 		{
-			throw new NotImplementedException();
+			this._by = (By)locator;
 		}
 
 		bool IBaseControl.IsVisible()
 		{
-			throw new NotImplementedException();
+			return this.GetNative().Displayed;
 		}
 
 		protected IWebElement GetNative()
