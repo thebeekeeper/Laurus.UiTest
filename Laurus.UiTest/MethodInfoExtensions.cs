@@ -18,5 +18,11 @@ namespace Laurus.UiTest
 		{
 			return methodInfo.Name.StartsWith("set_");
 		}
+
+		public static bool IsCollection(this Type type)
+		{
+			// TODO: figure out a better way to check if a type is a generic collection
+			return type.AssemblyQualifiedName.Contains("System.Collections");
+		}
 	}
 }

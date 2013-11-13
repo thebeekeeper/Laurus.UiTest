@@ -54,6 +54,7 @@ namespace Laurus.UiTest.Selenium
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
 			controlReg.RegisterControl<IClickable, Clickable>();
+			controlReg.RegisterControl<IStatic, Static>();
 			_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
 		}
 

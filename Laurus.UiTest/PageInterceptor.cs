@@ -33,7 +33,24 @@ namespace Laurus.UiTest
 				var locatorAttr = control.GetCustomAttribute<LocatorAttribute>();
 				var locator = _locatorFactory.BuildLocator(locatorAttr);
 				var controlType = control.PropertyType;
-				var controlImpl = _controls.GetControl(controlType, locator);
+
+				object controlImpl = null;
+				if (controlType.IsCollection())
+				{
+					var controls = new List<object>();
+					var innerType = controlType.GetGenericArguments();
+					for(int i = 0 ; i < innerType.Length ; i++)
+					{
+						var locatorStr = String.Format(locatorAttr.Expression, i);
+						var c = _controls.GetControl(innerType[i], null);
+						controls.Add(c);
+						controlImpl = controls;
+					}
+				}
+				else
+				{
+					controlImpl = _controls.GetControl(controlType, locator);
+				}
 
 				invocation.ReturnValue = controlImpl;
 			}
