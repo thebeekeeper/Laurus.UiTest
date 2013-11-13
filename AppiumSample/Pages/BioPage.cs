@@ -1,6 +1,5 @@
 ﻿using Laurus.UiTest;
 using Laurus.UiTest.Controls;
-using Laurus.UiTest.Locators;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -19,23 +19,6 @@ namespace Laurus.UiTest
 			_ctorParams = ctorParams;
 		}
 
-		T IControlRegistry.GetControl<T>(SelectorBase selector)
-		{
-			return (T)((IControlRegistry)this).GetControl(typeof(T), selector);
-		}
-
-		object IControlRegistry.GetControl(Type controlType, SelectorBase selector)
-		{
-			if (_controlTypes.ContainsKey(controlType))
-			{
-				var implType = _controlTypes[controlType];
-				var inst = Activator.CreateInstance(implType, _ctorParams);
-				((IBaseControl)inst).Find(selector);
-				return inst;
-			}
-			throw new Exception("Attempt to build non-existent control");
-		}
-
 		object IControlRegistry.GetControl(Type controlType, ILocator locator)
 		{
 			if (_controlTypes.ContainsKey(controlType))

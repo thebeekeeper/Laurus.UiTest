@@ -1,6 +1,5 @@
 ﻿using Castle.DynamicProxy;
 using Castle.Windsor;
-using Laurus.UiTest.Locators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,16 +33,6 @@ namespace Laurus.UiTest
 				var locatorAttr = control.GetCustomAttribute<LocatorAttribute>();
 				var locator = _locatorFactory.BuildLocator(locatorAttr);
 				var controlType = control.PropertyType;
-				SelectorBase selector = null;
-				//if (String.IsNullOrEmpty(locatorAttr.Name) == false)
-				//{
-				//	selector = new NameSelector(locatorAttr.Name);
-				//}
-				//else if (String.IsNullOrEmpty(locatorAttr.TagName) == false)
-				//{
-				//	selector = new TagNameSelector(locatorAttr.TagName);
-				//}
-				//var controlImpl = _controls.GetControl(controlType, selector);
 				var controlImpl = _controls.GetControl(controlType, locator);
 
 				invocation.ReturnValue = controlImpl;

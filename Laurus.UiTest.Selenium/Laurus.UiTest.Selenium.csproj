@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseControl.cs" />
     <Compile Include="Clickable.cs" />
     <Compile Include="Editable.cs" />
     <Compile Include="Locator.cs" />

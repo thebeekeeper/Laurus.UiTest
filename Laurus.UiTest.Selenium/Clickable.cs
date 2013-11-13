@@ -1,5 +1,4 @@
 ﻿using Laurus.UiTest.Controls;
-using Laurus.UiTest.Locators;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -9,38 +8,15 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest.Selenium
 {
-	public class Clickable : IBaseControl, IClickable
+	public class Clickable : BaseControl, IClickable
 	{
 		public Clickable(IWebDriver driver)
-		{
-			_driver = driver;
-		}
+			: base(driver)
+		{ }
 
 		public void Click()
 		{
-			_element = _driver.FindElement(_by);
-			_element.Click();
+			this.GetNative().Click();
 		}
-
-		void IBaseControl.Find(SelectorBase selector)
-		{
-			var name = ((NameSelector)selector).Name;
-			_by = By.Name(name);
-		}
-
-		void IBaseControl.Find(ILocator locator)
-		{
-			this._by = (By)locator;
-		}
-
-		bool IBaseControl.IsVisible()
-		{
-			_element = _driver.FindElement(_by);
-			return _element.Displayed;
-		}
-
-		IWebElement _element;
-		By _by;
-		IWebDriver _driver;
 	}
 }
