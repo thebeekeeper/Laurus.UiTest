@@ -8,7 +8,6 @@ namespace Laurus.UiTest
 {
 	public interface ILocator
 	{
-		string Name { get; set; }
-		string Value { get; set; }
+		// placeholder type for conversion to native locator type
 	}
 }

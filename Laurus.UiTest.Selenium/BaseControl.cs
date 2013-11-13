@@ -17,7 +17,7 @@ namespace Laurus.UiTest.Selenium
 
 		void IBaseControl.Find(ILocator locator)
 		{
-			this._by = (By)locator;
+			this._by = ((SeleniumLocator)locator).By;
 		}
 
 		bool IBaseControl.IsVisible()

@@ -7,31 +7,45 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest.Selenium
 {
-	public class Locator : By, ILocator
+	// TODO: this still seems pretty shabby
+	public class SeleniumLocator : By, ILocator
 	{
-		public new string Name { get; set; }
-		public string Value { get; set; }
+		public By By { get; set; }
+	}
 
-		public override IWebElement FindElement(ISearchContext context)
+	public class ExpressionLocator 
+	{
+		public static SeleniumLocator Expression(string expr)
 		{
-			if (Name.Equals("name"))
+			if (String.IsNullOrEmpty(expr))
 			{
-				return By.Name(Value).FindElement(context);
+				throw new ArgumentOutOfRangeException("Expression is empty");
 			}
-			else if (Name.Equals("id"))
-			{
-				return By.Id(Value).FindElement(context);
-			}
-			else if (Name.Equals("tagName"))
-			{
-				return By.TagName(Value).FindElement(context);
-			}
-			throw new Exception("Locator not found");
-		}
 
-		public override System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
-		{
-			return base.FindElements(context);
+			// simple expression parser - column=value
+			var parts = expr.Split(new[] { '=' });
+			var column = parts[0].ToLower().Trim();
+			var value = parts[1].Trim();
+
+			switch (column)
+			{
+				case "name":
+					return new SeleniumLocator() { By = By.Name(value) };
+				case "id":
+					return new SeleniumLocator() { By = By.Id(value) };
+				case "tagname":
+					return new SeleniumLocator() { By = By.TagName(value) };
+				case "text":
+					return new SeleniumLocator() { By = By.PartialLinkText(value) };
+				case "xpath":
+					return new SeleniumLocator() { By = By.XPath(value) };
+				case "css":
+					return new SeleniumLocator() { By = By.CssSelector(value) };
+				case "classname":
+					return new SeleniumLocator() { By = By.ClassName(value) };
+				default:
+					throw new ArgumentException(String.Format("{0} is not a valid search criteria", column));
+			}
 		}
 	}
 }

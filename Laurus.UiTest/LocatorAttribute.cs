@@ -9,15 +9,11 @@ namespace Laurus.UiTest
 	[AttributeUsage(AttributeTargets.Property)]
 	public class LocatorAttribute : Attribute
 	{
-		public string Name { get; set; }
+		public string Expression { get; protected set; }
 
-		public string Id { get; set; }
-
-		public string TagName { get; set; }
-
-		// TODO: needs to take named parameters
-		public LocatorAttribute()
+		public LocatorAttribute(string expression)
 		{
+			Expression = expression;
 		}
 	}
 }

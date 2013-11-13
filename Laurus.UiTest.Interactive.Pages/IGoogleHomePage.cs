@@ -9,10 +9,10 @@ namespace Laurus.UiTest.Interactive.Pages
 {
     public interface IGoogleHomePage : IPage
     {
-		[Locator(Name = "q")]
+		[Locator("Name = q")]
 		IEditable SearchBox { get; set; }
 
-		[Locator(Name = "btnK")]
+		[Locator("Name = btnK")]
 		IClickable SearchButton { get; set; }
     }
 }

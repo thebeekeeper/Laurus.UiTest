@@ -10,19 +10,19 @@ namespace SampleWebApp
 {
 	public interface IBiographyPage : IPage
 	{
-		[Locator(Name = "biographyNext")]
+		[Locator("Name = biographyNext")]
 		IClickable NextButton { get; set; }
 
-		[Locator(Name = "nameEdit")]
+		[Locator("Name = nameEdit")]
 		IEditable Name { get; set; }
 
-		[Locator(Name = "ageEdit")]
+		[Locator("Name = ageEdit")]
 		IEditable Age { get; set; }
 
-		[Locator(Name = "relationEdit")]
+		[Locator("Name = relationEdit")]
 		IEditable Relationship { get; set; }
 
-		[Locator(Name = "result")]
+		[Locator("Name = result")]
 		IEditable Result { get; set; }
 	}
 }
