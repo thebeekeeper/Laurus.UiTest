@@ -61,6 +61,7 @@
     <Compile Include="ClickableDiscoveryTests.cs" />
     <Compile Include="CollectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenshotTests.cs" />
     <Compile Include="WebFixture.cs" />
   </ItemGroup>
   <ItemGroup>

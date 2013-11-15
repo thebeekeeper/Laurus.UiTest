@@ -45,7 +45,7 @@ namespace Laurus.UiTest.Selenium
 					_driver = new ChromeDriver();
 					break;
 				case BrowserType.Remote:
-					_driver = new RemoteWebDriver(new Uri(startupParams.RemoteHost), desiredCaps, TimeSpan.FromMinutes(5));
+					_driver = new ScreenshotRemoteWebDriver(new Uri(startupParams.RemoteHost), desiredCaps, TimeSpan.FromMinutes(5));
 					break;
 				default:
 					throw new Exception("Browser type not found");
@@ -66,6 +66,12 @@ namespace Laurus.UiTest.Selenium
 		void ITest.Navigate(string target)
 		{
 			_driver.Navigate().GoToUrl(target);
+		}
+
+		void ITest.TakeScreenshot(string file)
+		{
+			var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+			screenshot.SaveAsFile(file, System.Drawing.Imaging.ImageFormat.Png);
 		}
 
 		void ITest.Quit()

@@ -27,6 +27,12 @@ namespace Laurus.UiTest
 		void Navigate(string target);
 
 		/// <summary>
+		/// Takes a screenshot of the app under test
+		/// </summary>
+		/// <param name="path">Full path of the file to save to</param>
+		void TakeScreenshot(string path);
+
+		/// <summary>
 		/// Ends the tests and closes any associated target app/browser
 		/// </summary>
 		void Quit();
