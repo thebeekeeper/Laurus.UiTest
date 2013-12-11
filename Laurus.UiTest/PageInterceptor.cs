@@ -41,8 +41,11 @@ namespace Laurus.UiTest
 					var innerType = controlType.GetGenericArguments();
 					for(int i = 0 ; i < innerType.Length ; i++)
 					{
+						// TODO: this is fairly dumb
 						var locatorStr = String.Format(locatorAttr.Expression, i);
-						var c = _controls.GetControl(innerType[i], null);
+						var attr = new LocatorAttribute(locatorStr);
+						locator = _locatorFactory.BuildLocator(attr);
+						var c = _controls.GetControl(innerType[i], locator);
 						controls.Add(c);
 						controlImpl = controls;
 					}

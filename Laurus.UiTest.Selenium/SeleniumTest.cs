@@ -50,12 +50,16 @@ namespace Laurus.UiTest.Selenium
 				default:
 					throw new Exception("Browser type not found");
 			}
+			_driver.Manage().Timeouts().ImplicitlyWait(startupParams.ImplicitWait);
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IEditable, Editable>();
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();
 			_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
+
+			// TODO: make this work
+			((IRotatable)_driver).Orientation = ScreenOrientation.Landscape;
 		}
 
 		T ITest.GetPage<T>()
@@ -65,13 +69,24 @@ namespace Laurus.UiTest.Selenium
 
 		void ITest.Navigate(string target)
 		{
-			_driver.Navigate().GoToUrl(target);
+			if (target.Equals("back"))
+				_driver.Navigate().Back();
+			else
+			{
+				_driver.Navigate().GoToUrl(target);
+			}
 		}
 
 		void ITest.TakeScreenshot(string file)
 		{
 			var screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
 			screenshot.SaveAsFile(file, System.Drawing.Imaging.ImageFormat.Png);
+		}
+
+		void ITest.RunScript(string script, Dictionary<string, object> parameters)
+		{
+			var jsExecutor = (IJavaScriptExecutor)_driver;
+			jsExecutor.ExecuteScript(script, parameters);
 		}
 
 		void ITest.Quit()

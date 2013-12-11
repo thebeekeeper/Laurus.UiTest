@@ -10,6 +10,7 @@ namespace Laurus.UiTest
 	{
 		public BrowserType BrowserType { get; set; }
 		public string RemoteHost { get; set; }
+		public TimeSpan ImplicitWait { get; set; }
 	}
 
 	public enum BrowserType
