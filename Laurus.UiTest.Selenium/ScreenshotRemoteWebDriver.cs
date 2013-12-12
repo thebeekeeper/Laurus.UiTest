@@ -24,14 +24,14 @@ namespace Laurus.UiTest.Selenium
 		{
 			get
 			{
-				var response = this.Execute("/session/{0}/orientation", new Dictionary<string, object>());
+				var response = this.Execute(DriverCommand.GetOrientation, new Dictionary<string, object>());
 				if (response.Value.Equals("LANDSCAPE"))
 					return ScreenOrientation.Landscape;
 				return ScreenOrientation.Portrait;
 			}
 			set
 			{
-				var response = this.Execute("/session{0}/orientation", new Dictionary<string,object>() { { "orientation", "LANDSCAPE" } });
+				var response = this.Execute(DriverCommand.SetOrientation, new Dictionary<string,object>() { { "orientation", "LANDSCAPE" } });
 			}
 		}
 	}

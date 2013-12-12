@@ -57,9 +57,6 @@ namespace Laurus.UiTest.Selenium
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();
 			_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
-
-			// TODO: make this work
-			((IRotatable)_driver).Orientation = ScreenOrientation.Landscape;
 		}
 
 		T ITest.GetPage<T>()
@@ -87,6 +84,18 @@ namespace Laurus.UiTest.Selenium
 		{
 			var jsExecutor = (IJavaScriptExecutor)_driver;
 			jsExecutor.ExecuteScript(script, parameters);
+		}
+
+		void ITest.SetOrientation(Orientation orientation)
+		{
+			var rotatable = _driver as IRotatable;
+			if (rotatable != null)
+			{
+				if (orientation == Orientation.Landscape)
+					rotatable.Orientation = ScreenOrientation.Landscape;
+				else
+					rotatable.Orientation = ScreenOrientation.Portrait;
+			}
 		}
 
 		void ITest.Quit()

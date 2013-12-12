@@ -32,7 +32,19 @@ namespace Laurus.UiTest
 		/// <param name="path">Full path of the file to save to</param>
 		void TakeScreenshot(string path);
 
+		/// <summary>
+		/// Executes an arbirary script on the page under test
+		/// </summary>
+		/// <param name="script"></param>
+		/// <param name="parameters"></param>
 		void RunScript(string script, Dictionary<string, object> parameters);
+
+		/// <summary>
+		/// Sets the device orientation to the specified value if the device under
+		/// test supports rotation
+		/// </summary>
+		/// <param name="orientation"></param>
+		void SetOrientation(Orientation orientation);
 
 		/// <summary>
 		/// Ends the tests and closes any associated target app/browser
