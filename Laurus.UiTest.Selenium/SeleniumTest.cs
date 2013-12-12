@@ -28,6 +28,7 @@ namespace Laurus.UiTest.Selenium
 
 			// need to register all types that inherit from IPage with interceptor
 			_container.Register(
+				//Types.FromAssemblyInThisApplication()
 				Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
 				.Where(t => typeof(IPage).IsAssignableFrom(t))
 				.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));

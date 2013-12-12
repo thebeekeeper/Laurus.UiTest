@@ -13,19 +13,18 @@ namespace AppiumSample
 {
 	public class TestClass1 : IUseFixture<AppiumFixture>
 	{
-//		[Fact]
+		[Fact]
 		public void MyTest()
 		{
-			//ITest test = new SeleniumTest(_driver);
-			//var bioPage = test.GetPage<BioPage>();
-			//bioPage.Name.Text = "bob loblaw";
+			var bioPage = _fixture.Test.GetPage<BioPage>();
+			bioPage.Name.Text = "bob loblaw";
 		}
 
 		public void SetFixture(AppiumFixture data)
 		{
-			_driver = data.GetDriver();
+			_fixture = data;
 		}
 
-		private IWebDriver _driver;
+		private AppiumFixture _fixture;
 	}
 }

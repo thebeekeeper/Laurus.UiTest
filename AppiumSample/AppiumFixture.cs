@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using Laurus.UiTest;
+using Laurus.UiTest.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -10,30 +12,31 @@ namespace AppiumSample
 {
 	public class AppiumFixture : IDisposable
 	{
-		public IWebDriver GetDriver()
+		public ITest Test { get; set; }
+
+		public AppiumFixture()
 		{
-			var desiredCaps = new DesiredCapabilities();
-			desiredCaps.SetCapability("device", "Android");
-			desiredCaps.SetCapability("browserName", "");
-			desiredCaps.SetCapability("version", "4.2");
-			desiredCaps.SetCapability("app", "sauce-storage:fd.zip");
-			desiredCaps.SetCapability("app-package", "com.example.FdMobile");
-			desiredCaps.SetCapability("app-activity", ".SplashActivity");
-			desiredCaps.SetCapability("username", "");
-			// the key is case sensitive!
-			desiredCaps.SetCapability("accessKey", "");
-			desiredCaps.SetCapability("deviceType", "phone");
-			var uri = "http://ondemand.saucelabs.com:80/wd/hub";
-			_driver = new RemoteWebDriver(new Uri(uri), desiredCaps, TimeSpan.FromMinutes(5));
-			return _driver;
+			var desiredCaps = new Dictionary<string, object>()
+			{
+				{ "device", "Android" },
+				{ "browserName", "" },
+				{ "version", "4.2" },
+				{ "app", "http://appium.s3.amazonaws.com/NotesList.apk" },
+				{ "app-package", "com.example.android.notepad" },
+				{ "app-activity", ".NotesList" },
+				{ "deviceType", "phone" },
+			};
+			var p = new StartupParameters()
+			{
+				RemoteHost = "http://localhost:4723/wd/hub",
+				BrowserType = BrowserType.Remote,
+			};
+			Test = new SeleniumTest(desiredCaps, p);
 		}
 
 		public void Dispose()
 		{
-			_driver.Close();
-			_driver.Dispose();
+			Test.Quit();
 		}
-
-		private IWebDriver _driver;
 	}
 }
