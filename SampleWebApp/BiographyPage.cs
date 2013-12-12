@@ -26,6 +26,6 @@ namespace SampleWebApp
 		IEditable Result { get; set; }
 
 		[Locator("Id = item{0}")]
-		IEnumerable<IStatic> ListItems { get; set; }
+		IList<IStatic> ListItems { get; set; }
 	}
 }

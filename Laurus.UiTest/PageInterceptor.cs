@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using Castle.Windsor;
+using Laurus.UiTest.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,12 +38,13 @@ namespace Laurus.UiTest
 				object controlImpl = null;
 				if (controlType.IsCollection())
 				{
-					var controls = new List<object>();
+					var controls = new List<IBaseControl>();
 					var innerType = controlType.GetGenericArguments();
 					for(int i = 0 ; i < innerType.Length ; i++)
 					{
 						var locatorStr = String.Format(locatorAttr.Expression, i);
-						var c = _controls.GetControl(innerType[i], null);
+						locator = _locatorFactory.BuildLocator(locatorAttr);
+						var c = _controls.GetControl(innerType[i], locator) as IBaseControl;
 						controls.Add(c);
 						controlImpl = controls;
 					}
