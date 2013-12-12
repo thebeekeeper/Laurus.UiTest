@@ -32,6 +32,8 @@ namespace Laurus.UiTest
 		/// <param name="path">Full path of the file to save to</param>
 		void TakeScreenshot(string path);
 
+		void RunScript(string script, Dictionary<string, object> parameters);
+
 		/// <summary>
 		/// Ends the tests and closes any associated target app/browser
 		/// </summary>

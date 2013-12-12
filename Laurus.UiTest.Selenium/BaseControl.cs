@@ -22,7 +22,14 @@ namespace Laurus.UiTest.Selenium
 
 		bool IBaseControl.IsVisible()
 		{
-			return this.GetNative().Displayed;
+			try
+			{
+				return this.GetNative().Displayed;
+			}
+			catch (NoSuchElementException)
+			{
+				return false;
+			}
 		}
 
 		protected IWebElement GetNative()

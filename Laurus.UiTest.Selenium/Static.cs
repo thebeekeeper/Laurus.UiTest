@@ -16,7 +16,7 @@ namespace Laurus.UiTest.Selenium
 
 		string IStatic.Text
 		{
-			get { return GetNative().Text; }
+			get { return GetNative().Text + GetNative().GetAttribute("name"); }
 		}
 	}
 }
