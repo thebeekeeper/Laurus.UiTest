@@ -54,6 +54,7 @@ namespace Laurus.UiTest.Selenium
 			_driver.Manage().Timeouts().ImplicitlyWait(startupParams.ImplicitWait);
 			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
+			controlReg.RegisterControl<IBaseControl, BaseControl>();
 			controlReg.RegisterControl<IEditable, Editable>();
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();

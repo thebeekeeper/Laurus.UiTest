@@ -40,21 +40,16 @@ namespace Laurus.UiTest
 				{
 					var controls = new List<IBaseControl>();
 					var innerType = controlType.GetGenericArguments();
-					for(int i = 0 ; i < innerType.Length ; i++)
+					for(int i = 1 ; i < innerType.Length + 1 ; i++)
 					{
 						// TODO: this is fairly dumb
 						var locatorStr = String.Format(locatorAttr.Expression, i);
-//<<<<<<< HEAD
-//						locator = _locatorFactory.BuildLocator(locatorAttr);
-//						var c = _controls.GetControl(innerType[i], locator) as IBaseControl;
-//=======
-//						var attr = new LocatorAttribute(locatorStr);
-//						locator = _locatorFactory.BuildLocator(attr);
-//						var c = _controls.GetControl(innerType[i], locator);
-//>>>>>>> 6542b0774eddd5470c8390ffd5fa9421dd788f49
-//						controls.Add(c);
-						controlImpl = controls;
+						locatorAttr = new LocatorAttribute(locatorStr);
+						locator = _locatorFactory.BuildLocator(locatorAttr);
+						var c = _controls.GetControl(innerType[i - 1], locator) as IBaseControl;
+						controls.Add(c);
 					}
+					controlImpl = controls;
 				}
 				else
 				{

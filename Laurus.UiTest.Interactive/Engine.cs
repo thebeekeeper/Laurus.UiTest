@@ -27,6 +27,8 @@ namespace Laurus.UiTest.Interactive
 			// TODO: temp
 			_scriptEngine.AddReference("Laurus.UiTest.Interactive.Pages.dll");
 			_scriptEngine.ImportNamespace("Laurus.UiTest.Interactive.Pages");
+			_scriptEngine.AddReference("Savo.Mobile.UiTest.Ios.dll");
+			_scriptEngine.ImportNamespace("Savo.Mobile.UiTest.Ios.Pages");
 		}
 
 		public void Begin()

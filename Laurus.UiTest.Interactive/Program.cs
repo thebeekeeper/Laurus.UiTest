@@ -18,9 +18,16 @@ namespace Laurus.UiTest.Interactive
 			LineEditor le = new LineEditor(null);
 			string s;
 
-			e.Execute("ITest test = new SeleniumTest(new Dictionary<string, object>(), new StartupParameters() { BrowserType = BrowserType.Firefox });");
+			Console.WriteLine("Initializing...");
+			var init = System.IO.File.ReadAllText("Init.cs");
+			e.Execute(init);
+
 			while ((s = le.Edit("shell> ", "")) != null)
 			{
+				if (s.Equals("quit", StringComparison.InvariantCultureIgnoreCase) || s.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
+				{
+					break;
+				}
 				Console.WriteLine("----> [{0}]", s);
 				e.Execute(s);
 			}

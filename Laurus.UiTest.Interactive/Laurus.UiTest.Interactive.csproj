@@ -60,6 +60,9 @@
   <ItemGroup>
     <Compile Include="Engine.cs" />
     <Compile Include="GetLine.cs" />
+    <Content Include="Init.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
