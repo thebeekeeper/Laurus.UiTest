@@ -20,7 +20,7 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.dll" target="lib\net40" />
-        <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.pdb" target="lib\net40" />
+        <file src="Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.dll" target="lib\net40" />
+        <file src="Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.pdb" target="lib\net40" />
     </files>
 </package>

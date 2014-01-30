@@ -17,6 +17,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="..\Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
+        <file src="Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
     </files>
 </package>
