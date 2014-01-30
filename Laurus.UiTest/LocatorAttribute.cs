@@ -11,9 +11,16 @@ namespace Laurus.UiTest
 	{
 		public string Expression { get; protected set; }
 
-		public LocatorAttribute(string expression)
+		public string Platform { get; protected set; }
+
+		public LocatorAttribute(string expression, string platform)
 		{
 			Expression = expression;
+			Platform = platform;
 		}
+
+		public LocatorAttribute(string expression)
+			: this(expression, string.Empty)
+		{ }
 	}
 }
