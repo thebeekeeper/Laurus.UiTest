@@ -13,10 +13,11 @@ namespace Laurus.UiTest
 	[Serializable]
 	public class PageInterceptor : IInterceptor
 	{
-		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory)
+		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory, IPageAspect pageAspect)
 		{
 			_controls = controls;
 			_locatorFactory = locatorFactory;
+			_pageAspect = pageAspect;
 		}
 
 		public void Intercept(IInvocation invocation)
@@ -26,6 +27,9 @@ namespace Laurus.UiTest
 				// remove get/set prefix
 				var propertyName = invocation.Method.Name.Substring(4);
 				var pageType = invocation.Method.DeclaringType;
+
+				_pageAspect.BeforeControl(pageType);
+
 				var control = pageType.GetProperties().Where(p => p.Name.Equals(propertyName)).FirstOrDefault();
 				if (control == default(PropertyInfo))
 				{
@@ -67,6 +71,7 @@ namespace Laurus.UiTest
 		// TODO: this is essentially a service locator - not sure how to get rid of it
 		private readonly IControlRegistry _controls;
 		private readonly ILocatorFactory _locatorFactory;
+		private readonly IPageAspect _pageAspect;
 	}
 
 	// thinking about dynamically creating control implementations.  maybe later

@@ -32,6 +32,12 @@ namespace Laurus.UiTest.Selenium
 				Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
 				.Where(t => typeof(IPage).IsAssignableFrom(t))
 				.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
+			//_container.Register(Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
+			//	.Where(t => typeof(IPageAspect).IsAssignableFrom(t))
+			//	.WithService.FromInterface());
+			_container.Register(Classes.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll")).BasedOn<IPageAspect>().WithService.FromInterface());
+			// kind of a service locator - need it for page aspects
+			_container.Register(Component.For<ITest>().Instance(this));
 			_container.Register(Component.For<PageInterceptor>());
 			_container.Register(Component.For<ILocatorFactory>().ImplementedBy<LocatorFactory>());
 

@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppiumFixture.cs" />
+    <Compile Include="ScreenshotAspect.cs" />
     <Compile Include="Pages\BioPage.cs" />
     <Compile Include="TestClass1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
