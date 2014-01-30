@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>Laurus.UiTest</id>
-    <version>$version$</version>
-    <title>Laurus UiTest</title>
-    <authors>ngamroth</authors>
-    <owners>ngamroth</owners>
-    <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Page builder UI test metaframework</description>
-    <releaseNotes>Pre-beta release</releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>Testing UI Automation</tags>
-	  <dependencies>
-		  <dependency id="Castle.Windsor" version="3.2.0"></dependency>
-	  </dependencies>
-	  <files>
-		  <file src="..\Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
-	  </files>
-  </metadata>
+    <metadata>
+        <id>Laurus.UiTest</id>
+        <version>1.1.0</version>
+        <title>Laurus UiTest</title>
+        <authors>ngamroth</authors>
+        <owners>ngamroth</owners>
+        <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Page builder UI test metaframework</description>
+        <releaseNotes>Pre-beta release</releaseNotes>
+        <copyright>Copyright 2013</copyright>
+        <tags>Testing UI Automation</tags>
+        <dependencies>
+            <dependency id="Castle.Windsor" version="3.2.0"></dependency>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
+    </files>
 </package>

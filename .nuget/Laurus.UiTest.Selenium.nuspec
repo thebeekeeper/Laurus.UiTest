@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>Laurus.UiTest.Selenium</id>
-    <version>$version$</version>
-    <title>Laurus UiTest Selenium</title>
-    <authors>ngamroth</authors>
-    <owners>ngamroth</owners>
-    <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>WebDriver based implementation of Laurus.UiTest</description>
-    <releaseNotes>Pre-beta release</releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>UI Automation Testing</tags>
-	  <dependencies>
-		  <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
-          <dependency id="Selenium.WebDriver" version="2.35.0"></dependency>
-          <dependency id="Castle.Windsor" version="3.2.1"></dependency>
-          <dependency id="Castle.Core" version="3.2.1"></dependency>
-	  </dependencies>
-	  <files>
-		  <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.dll" target="lib\net40" />
-		  <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.pdb" target="lib\net40" />
-	  </files>
-  </metadata>
+    <metadata>
+        <id>Laurus.UiTest.Selenium</id>
+        <version>1.1</version>
+        <title>Laurus UiTest Selenium</title>
+        <authors>ngamroth</authors>
+        <owners>ngamroth</owners>
+        <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>WebDriver based implementation of Laurus.UiTest</description>
+        <releaseNotes>Pre-beta release</releaseNotes>
+        <copyright>Copyright 2013</copyright>
+        <tags>UI Automation Testing</tags>
+        <dependencies>
+            <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
+            <dependency id="Selenium.WebDriver" version="2.35.0"></dependency>
+            <dependency id="Castle.Windsor" version="3.2.1"></dependency>
+            <dependency id="Castle.Core" version="3.2.1"></dependency>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.dll" target="lib\net40" />
+        <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.pdb" target="lib\net40" />
+    </files>
 </package>
