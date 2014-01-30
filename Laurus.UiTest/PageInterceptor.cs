@@ -74,6 +74,15 @@ namespace Laurus.UiTest
 		private readonly IPageAspect _pageAspect;
 	}
 
+	public static class PropertyInfoExtensions
+	{
+		public static T GetCustomAttribute<T>(this PropertyInfo propertyInfo)
+		{
+			var attr = propertyInfo.GetCustomAttributes(typeof(T), false).FirstOrDefault();
+			return (T)attr;
+		}
+	}
+
 	// thinking about dynamically creating control implementations.  maybe later
 	// - would probably have to be driver implementation specific
 	//public class ControlBuilder
