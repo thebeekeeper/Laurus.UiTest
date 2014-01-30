@@ -1,22 +1,26 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>Laurus.UiTest.Selenium</id>
     <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <title>Laurus UiTest Selenium</title>
+    <authors>ngamroth</authors>
+    <owners>ngamroth</owners>
     <projectUrl>https://github.com/thebeekeeper/Laurus.UiTest</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>WebDriver based implementation of Laurus.UiTest</description>
     <releaseNotes>Pre-beta release</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>UI Automation Testing</tags>
 	  <dependencies>
 		  <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
+          <dependency id="Selenium.WebDriver" version="2.35.0"></dependency>
+          <dependency id="Castle.Windsor" version="3.2.1"></dependency>
+          <dependency id="Castle.Core" version="3.2.1"></dependency>
 	  </dependencies>
 	  <files>
-		  <file src="..\Laurus.UiTest\bin\Release\Laurus.UiTest.dll" target="lib\net40" />
+		  <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.dll" target="lib\net40" />
+		  <file src="..\Laurus.UiTest.Selenium\bin\Release\Laurus.UiTest.Selenium.pdb" target="lib\net40" />
 	  </files>
   </metadata>
 </package>
