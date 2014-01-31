@@ -61,6 +61,8 @@ namespace Laurus.UiTest
 				}
 
 				invocation.ReturnValue = controlImpl;
+
+				_pageAspect.AfterControl(pageType);
 			}
 			else
 			{
