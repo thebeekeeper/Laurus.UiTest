@@ -13,11 +13,17 @@ namespace Laurus.UiTest
 	[Serializable]
 	public class PageInterceptor : IInterceptor
 	{
-		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory, IPageAspect pageAspect)
+		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory, IEnumerable<IPageAspect> pageAspects)
 		{
 			_controls = controls;
 			_locatorFactory = locatorFactory;
-			_pageAspect = pageAspect;
+			_pageAspects = pageAspects.ToList();
+		}
+
+		public PageInterceptor(IControlRegistry controls, ILocatorFactory locatorFactory)
+		{
+			_controls = controls;
+			_locatorFactory = locatorFactory;
 		}
 
 		public void Intercept(IInvocation invocation)
@@ -28,7 +34,7 @@ namespace Laurus.UiTest
 				var propertyName = invocation.Method.Name.Substring(4);
 				var pageType = invocation.Method.DeclaringType;
 
-				_pageAspect.BeforeControl(pageType);
+				_pageAspects.ForEach(a => a.BeforeControl(pageType));
 
 				var control = pageType.GetProperties().Where(p => p.Name.Equals(propertyName)).FirstOrDefault();
 				if (control == default(PropertyInfo))
@@ -62,7 +68,7 @@ namespace Laurus.UiTest
 
 				invocation.ReturnValue = controlImpl;
 
-				_pageAspect.AfterControl(pageType);
+				_pageAspects.ForEach(a => a.AfterControl(pageType));
 			}
 			else
 			{
@@ -73,7 +79,7 @@ namespace Laurus.UiTest
 		// TODO: this is essentially a service locator - not sure how to get rid of it
 		private readonly IControlRegistry _controls;
 		private readonly ILocatorFactory _locatorFactory;
-		private readonly IPageAspect _pageAspect;
+		private readonly List<IPageAspect> _pageAspects;
 	}
 
 	public static class PropertyInfoExtensions
