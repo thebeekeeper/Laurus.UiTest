@@ -24,6 +24,7 @@ namespace Laurus.UiTest
 		{
 			_controls = controls;
 			_locatorFactory = locatorFactory;
+			_pageAspects = Enumerable.Empty<IPageAspect>().ToList();
 		}
 
 		public void Intercept(IInvocation invocation)

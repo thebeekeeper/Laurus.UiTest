@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,10 @@ namespace Laurus.UiTest.Selenium
 				case "xpath":
 					return new SeleniumLocator() { By = By.XPath(value) };
 				case "css":
+					// HACK: we depend on = for the expression, but css selectors use them too
+					value = value.Replace(":", "=");
+					// this one's even worse!  css can use selectors which can have ':' in them
+					value = value.Replace("+", ":");
 					return new SeleniumLocator() { By = By.CssSelector(value) };
 				case "classname":
 					return new SeleniumLocator() { By = By.ClassName(value) };
