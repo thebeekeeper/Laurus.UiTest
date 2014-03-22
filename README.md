@@ -44,7 +44,7 @@ public void SearchTest()
   google.SearchButton.Click();
   Assert.True(got some results...);
 }
-
+```
 
 ## NuGet Installation
 
