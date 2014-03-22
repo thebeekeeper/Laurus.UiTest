@@ -29,7 +29,11 @@ namespace Laurus.UiTest
 				var locator = _pageMap.GetLocator(msg.PropertyName());
 				var nativeLocator = _converter.Build(locator);
 				nativeControl = _controlRegistry.GetControl(msg.PropertyType(), nativeLocator);
-				System.Diagnostics.Debug.WriteLine("Generic locator: {0}", locator);
+			}
+			else
+			{
+				// should only ever be getter - it doesn't make sense to set a page element
+				throw new InvalidOperationException("Can't set page elements");
 			}
 
             var returnMessage = new ReturnMessage(nativeControl, null, 0, methodCall.LogicalCallContext, methodCall);
@@ -59,9 +63,6 @@ namespace Laurus.UiTest
 			var m = (IMethodCallMessage)msg;
 			var methodInfo = m.MethodBase as MethodInfo;
 			return methodInfo.ReturnType;
-			//var m = (Message)m;
-			//var type = ((System.Reflection.RuntimeMethodInfo)m.MethodBase).ReturnType;
-			//return typeof(Controls.IEditable);
 		}
 
 		private static readonly string MethodName = "__MethodName";

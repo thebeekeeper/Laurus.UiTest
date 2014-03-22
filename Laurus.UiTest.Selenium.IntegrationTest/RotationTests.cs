@@ -9,7 +9,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 {
 	public class RotationTests : IUseFixture<RemoteFixture>
 	{
-		[Fact]
+//		[Fact]
 		public void Can_Change_Orientation()
 		{
 		}

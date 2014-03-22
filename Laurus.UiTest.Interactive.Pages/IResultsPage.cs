@@ -9,7 +9,14 @@ namespace Laurus.UiTest.Interactive.Pages
 {
 	public interface IResultsPage : IPage
 	{
-		[Locator("Name = resultStats")]
 		IClickable ResultStats { get; set; }
+	}
+
+    public class ResultsMap : PageMap<IResultsPage>
+	{
+		public ResultsMap()
+		{
+			AddToMap(x => x.ResultStats, "Name", "resultStats");
+		}
 	}
 }
