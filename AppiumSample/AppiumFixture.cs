@@ -16,22 +16,16 @@ namespace AppiumSample
 
 		public AppiumFixture()
 		{
-			var desiredCaps = new Dictionary<string, object>()
-			{
-				{ "device", "Android" },
-				{ "browserName", "" },
-				{ "version", "4.2" },
-				{ "app", "http://appium.s3.amazonaws.com/NotesList.apk" },
-				{ "app-package", "com.example.android.notepad" },
-				{ "app-activity", ".NotesList" },
-				{ "deviceType", "phone" },
-			};
-			var p = new StartupParameters()
-			{
-				RemoteHost = "http://localhost:4723/wd/hub",
-				BrowserType = BrowserType.Remote,
-			};
-			Test = new SeleniumTest(desiredCaps, p);
+			Test = new TestBuilder()
+				.WithCapability("device", "Android")
+				.WithCapability("browserName", "")
+				.WithCapability("version", "4.2")
+				.WithCapability("app", "http://appium.s3.amazonaws.com/NotesList.apk")
+				.WithCapability("app-package", "com.example.android.notepad")
+				.WithCapability("app-activity", ".NotesList")
+				.WithCapability("deviceType", "phone")
+				.ImplicitWait(TimeSpan.FromSeconds(30))
+				.UsingSeleniumRemote("http://localhost:4723/wd/hub");
 		}
 
 		public void Dispose()

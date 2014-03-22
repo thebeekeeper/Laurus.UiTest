@@ -26,7 +26,6 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 		public void SetFixture(WebFixture data)
 		{
 			_fixture = data;
-			_fixture.StartBrowser();
 		}
 
 		private WebFixture _fixture;

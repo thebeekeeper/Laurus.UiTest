@@ -55,6 +55,7 @@
     <Compile Include="ScreenshotRemoteWebDriver.cs" />
     <Compile Include="SeleniumTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeleniumTestBuilder.cs" />
     <Compile Include="Static.cs" />
   </ItemGroup>
   <ItemGroup>

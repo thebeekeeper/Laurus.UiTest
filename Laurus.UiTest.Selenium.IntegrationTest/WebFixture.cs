@@ -13,15 +13,14 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 
 		public WebFixture()
 		{
-			Test = new SeleniumTest(new Dictionary<string, object>(), new StartupParameters() { BrowserType = BrowserType.Firefox });
-		}
-
-		public void StartBrowser()
-		{
 			var file = @"..\..\..\SampleWebApp\biography.html";
 			var targetPath = Path.GetTempFileName() + ".html";
 			File.Copy(file, targetPath);
-			Test.Navigate("file://" + targetPath);
+			var startUrl = "file://" + targetPath;
+			Test = new TestBuilder()
+				.WithFirefox()
+				.UsingSeleniumDriver()
+                .StartAt(startUrl);
 		}
 
 		void IDisposable.Dispose()
