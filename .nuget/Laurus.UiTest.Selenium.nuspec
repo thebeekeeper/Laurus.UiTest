@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>Laurus.UiTest.Selenium</id>
-        <version>1.1</version>
+        <version>2.0.0</version>
         <title>Laurus UiTest Selenium</title>
         <authors>ngamroth</authors>
         <owners>ngamroth</owners>
@@ -15,8 +15,6 @@
         <dependencies>
             <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
             <dependency id="Selenium.WebDriver" version="2.35.0"></dependency>
-            <dependency id="Castle.Windsor" version="3.2.1"></dependency>
-            <dependency id="Castle.Core" version="3.2.1"></dependency>
         </dependencies>
     </metadata>
     <files>
