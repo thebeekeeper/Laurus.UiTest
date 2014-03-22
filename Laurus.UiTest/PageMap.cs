@@ -14,6 +14,11 @@ namespace Laurus.UiTest
 			_locators = new Dictionary<string, Locator>();
 		}
 
+        public PageMap(string platformName)
+		{
+
+		}
+
 		public void AddToMap(Expression<Func<T, IBaseControl>> control, string name, string value)
 		{
 			var propertyExpression = (MemberExpression)control.Body;

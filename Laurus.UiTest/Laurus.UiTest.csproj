@@ -51,6 +51,7 @@
     <Compile Include="Orientation.cs" />
     <Compile Include="PageFactory.cs" />
     <Compile Include="PageProxy.cs" />
+    <Compile Include="PlatformAttribute.cs" />
     <Compile Include="StartupParameters.cs" />
     <Compile Include="ControlRegistry.cs" />
     <Compile Include="Controls\IBaseControl.cs" />
