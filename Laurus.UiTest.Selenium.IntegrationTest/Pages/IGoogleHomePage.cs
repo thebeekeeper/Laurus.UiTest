@@ -9,8 +9,8 @@ namespace Laurus.UiTest.Selenium.IntegrationTest.Pages
 {
     public interface IGoogleHomePage : IPage
     {
-		IEditable SearchBox { get; set; }
-		IClickable SearchButton { get; set; }
+		IEditable SearchBox { get; }
+		IClickable SearchButton { get; }
     }
 
     public class GoogleMap : PageMap<IGoogleHomePage>

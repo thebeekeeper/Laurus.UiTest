@@ -33,7 +33,17 @@ public class GooglePageMap : PageMap<IGooglePage>
 }
 ```
 
-Once you have a map, you're ready to write tests.  There are or will be various implementation of the base framework for different test drivers.  Right now there's only a Selenium one.  
+Once you have a map, you're ready to write tests.  
+
+```
+[Fact]
+public void SearchTest()
+{
+  var google = _fixture.Test.GetPage<IGooglePage>();
+  google.SearchBox.Text = "hello world";
+  google.SearchButton.Click();
+  Assert.True(got some results...);
+}
 
 
 ## NuGet Installation
