@@ -11,21 +11,21 @@ namespace Laurus.UiTest
 	{
         public PageMap()
 		{
-			_locators = new Dictionary<string, string>();
+			_locators = new Dictionary<string, Locator>();
 		}
 
 		public void AddToMap(Expression<Func<T, IBaseControl>> control, string name, string value)
 		{
 			var propertyExpression = (MemberExpression)control.Body;
 			var key = propertyExpression.Member.Name;
-			_locators.Add(key, name);
+			_locators.Add(key, new Locator() { Key = name, Value = value });
 		}
 
-		public String GetLocator(string property)
+		public Locator GetLocator(string property)
 		{
 			return _locators[property];
 		}
 
-		private Dictionary<string, string> _locators;
+		private Dictionary<string, Locator> _locators;
 	}
 }

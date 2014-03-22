@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\IStatic.cs" />
+    <Compile Include="INativeLocatorFactory.cs" />
+    <Compile Include="Locator.cs" />
     <Compile Include="PageMap.cs" />
     <Compile Include="IPageAspect.cs" />
     <Compile Include="Orientation.cs" />

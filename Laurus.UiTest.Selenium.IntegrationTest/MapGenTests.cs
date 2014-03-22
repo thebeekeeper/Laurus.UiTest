@@ -12,7 +12,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
         [Fact]
         public void GetMaps()
 		{
-			var f = new PageFactory();
+			var f = new PageFactory(new LocatorFactory(), new ControlRegistry(null));
 			var map = f.GetPage<IGoogleHomePage>();
 			Assert.NotNull(map);
 		}

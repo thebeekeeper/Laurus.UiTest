@@ -24,17 +24,18 @@ namespace Laurus.UiTest.Selenium
 			_container = new WindsorContainer();
 
 			// need to register all types that inherit from IPage with interceptor
-			_container.Register(
-				//Types.FromAssemblyInThisApplication()
-				Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
-				.Where(t => typeof(IPage).IsAssignableFrom(t))
-				.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
-			_container.Kernel.Resolver.AddSubResolver(new CollectionResolver(_container.Kernel, false));
-			_container.Register(Classes.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll")).BasedOn<IPageAspect>().WithService.FromInterface().AllowMultipleMatches());
+			//_container.Register(
+			//	//Types.FromAssemblyInThisApplication()
+			//	Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
+			//	.Where(t => typeof(IPage).IsAssignableFrom(t))
+			//	.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
+			//_container.Kernel.Resolver.AddSubResolver(new CollectionResolver(_container.Kernel, false));
+			//_container.Register(Classes.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll")).BasedOn<IPageAspect>().WithService.FromInterface().AllowMultipleMatches());
 			// kind of a service locator - need it for page aspects
-			_container.Register(Component.For<ITest>().Instance(this));
-			_container.Register(Component.For<PageInterceptor>());
-			_container.Register(Component.For<ILocatorFactory>().ImplementedBy<LocatorFactory>());
+			//_container.Register(Component.For<ITest>().Instance(this));
+			//_container.Register(Component.For<PageInterceptor>());
+			//_container.Register(Component.For<ILocatorFactory>().ImplementedBy<LocatorFactory>());
+
 
 			var desiredCaps = new DesiredCapabilities(parameters);
 
@@ -53,18 +54,21 @@ namespace Laurus.UiTest.Selenium
 					throw new Exception("Browser type not found");
 			}
 			_driver.Manage().Timeouts().ImplicitlyWait(startupParams.ImplicitWait);
-			_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
+			//_container.Register(Component.For<IWebDriver>().Instance(_driver).LifestyleSingleton());
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
 			controlReg.RegisterControl<IBaseControl, BaseControl>();
 			controlReg.RegisterControl<IEditable, Editable>();
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();
-			_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
+			//_container.Register(Component.For<IControlRegistry>().Instance(controlReg).LifestyleSingleton());
+			//var cr = new ControlRegistry(new[] { new object() }) as IControlRegistry;
+			_pageFactory = new PageFactory(new LocatorFactory(), controlReg);
 		}
 
 		T ITest.GetPage<T>()
 		{
-			return _container.Resolve<T>();
+			//return _container.Resolve<T>();
+			return _pageFactory.GetPage<T>();
 		}
 
 		void ITest.Navigate(string target)
@@ -108,5 +112,6 @@ namespace Laurus.UiTest.Selenium
 
 		private readonly IWebDriver _driver;
 		private readonly IWindsorContainer _container;
+		private readonly PageFactory _pageFactory;
 	}
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest.Selenium
 {
-	public class LocatorFactory : ILocatorFactory
+	public class LocatorFactory : INativeLocatorFactory
 	{
-		ILocator ILocatorFactory.BuildLocator(LocatorAttribute selector)
+		ILocator INativeLocatorFactory.Build(Locator locator)
 		{
-			return ExpressionLocator.Expression(selector.Expression);
+            return new SeleniumLocator(locator);
 		}
 	}
 }

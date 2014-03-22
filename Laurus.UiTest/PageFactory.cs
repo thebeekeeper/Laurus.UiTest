@@ -7,6 +7,12 @@ namespace Laurus.UiTest
 {
 	public class PageFactory
 	{
+        public PageFactory(INativeLocatorFactory nativeLocators, IControlRegistry controlRegistry)
+		{
+			_locators = nativeLocators;
+			_controlRegistry = controlRegistry;
+		}
+
         public T GetPage<T>() where T : IPage
 		{
 			var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes());
@@ -19,9 +25,12 @@ namespace Laurus.UiTest
 
             // build a proxy class for T
             // which has the MapFor<T> in it
-			var proxy = new PageProxy<T>(mapInstance);
+			var proxy = new PageProxy<T>(mapInstance, _locators, _controlRegistry);
 			return (T)proxy.GetTransparentProxy();
         }
+
+		private readonly INativeLocatorFactory _locators;
+		private readonly IControlRegistry _controlRegistry;
 	}
 
     public class MapNotFoundException : Exception

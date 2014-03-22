@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Laurus.UiTest
 {
-	public interface ILocatorFactory
-	{
-		ILocator BuildLocator(LocatorAttribute selector);
-	}
+	//public interface ILocatorFactory
+	//{
+	//	ILocator BuildLocator(LocatorAttribute selector);
+	//}
 }

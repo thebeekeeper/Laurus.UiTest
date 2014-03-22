@@ -23,15 +23,6 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			Assert.Equal("asdf", result);
 		}
 
-        [Fact]
-        public void CanSearchGoogle()
-		{
-			var page = _fixture.Test.GetPage<IGoogleHomePage>();
-			page.SearchBox.Text = "robot";
-			page.SearchButton.Click();
-		}
-
-
 		public void SetFixture(WebFixture data)
 		{
 			_fixture = data;
