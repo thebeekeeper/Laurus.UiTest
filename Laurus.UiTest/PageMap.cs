@@ -21,6 +21,11 @@ namespace Laurus.UiTest
 			_locators.Add(key, new Locator() { Key = name, Value = value });
 		}
 
+		public void AddToMap(Expression<Func<T, IBaseControl>> control, LocatorKey name, string value)
+		{
+            AddToMap(control, name.ToString(), value);
+		}
+
 		public Locator GetLocator(string property)
 		{
 			return _locators[property];

@@ -25,7 +25,9 @@ public class GooglePageMap : PageMap<IGooglePage>
 {
   pubilc GooglePageMap()
   {
-    AddToMap(x => x.SearchBox, "Name", "q");
+    // Can use a predefined locator...
+    AddToMap(x => x.SearchBox, LocatorKey.Name, "q");
+    // ... or an arbitrary one
     AddToMap(x => x.SearchButton, "Name", "btnG");
   }
 }
