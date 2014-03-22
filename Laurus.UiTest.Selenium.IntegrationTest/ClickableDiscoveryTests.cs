@@ -1,4 +1,5 @@
-﻿using SampleWebApp;
+﻿using Laurus.UiTest.Selenium.IntegrationTest.Pages;
+using SampleWebApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,15 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			var result = page.Result.Text;
 			Assert.Equal("asdf", result);
 		}
+
+        [Fact]
+        public void CanSearchGoogle()
+		{
+			var page = _fixture.Test.GetPage<IGoogleHomePage>();
+			page.SearchBox.Text = "robot";
+			page.SearchButton.Click();
+		}
+
 
 		public void SetFixture(WebFixture data)
 		{

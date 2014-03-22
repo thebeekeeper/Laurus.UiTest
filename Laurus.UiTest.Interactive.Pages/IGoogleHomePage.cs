@@ -9,10 +9,23 @@ namespace Laurus.UiTest.Interactive.Pages
 {
     public interface IGoogleHomePage : IPage
     {
-		[Locator("Name = q")]
 		IEditable SearchBox { get; set; }
-
-		[Locator("Name = btnK")]
 		IClickable SearchButton { get; set; }
     }
+
+	//public class GooglePageMap : IMapFor<IGoogleHomePage>
+	//{
+	//	void IMapFor<IGoogleHomePage>.Configure(PageMap<IGoogleHomePage> map)
+	//	{
+	//		map.AddToMap(x => x.SearchBox, "Name", "q");
+	//		map.AddToMap(x => x.SearchButton, "Name", "btnQ");
+	//	}
+
+	//	string IMapFor<IGoogleHomePage>.LocatorFor(string property)
+	//	{
+	//		return _locators[property];
+	//	}
+
+	//	private Dictionary<string, string> _locators;
+	//}
 }

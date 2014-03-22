@@ -51,8 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\IStatic.cs" />
+    <Compile Include="PageMap.cs" />
     <Compile Include="IPageAspect.cs" />
     <Compile Include="Orientation.cs" />
+    <Compile Include="PageFactory.cs" />
+    <Compile Include="PageProxy.cs" />
     <Compile Include="StartupParameters.cs" />
     <Compile Include="ControlRegistry.cs" />
     <Compile Include="Controls\IBaseControl.cs" />

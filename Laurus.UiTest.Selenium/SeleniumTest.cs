@@ -23,19 +23,12 @@ namespace Laurus.UiTest.Selenium
 		{
 			_container = new WindsorContainer();
 
-			// TODO: putting the controls in windsor gives some weird null ref exception when resolving a page
-			//_container.Register(Component.For<IEditable>().ImplementedBy<Editable>().LifestyleTransient());
-			//_container.Register(Component.For<IClickable>().ImplementedBy<Clickable>().LifestyleTransient());
-
 			// need to register all types that inherit from IPage with interceptor
 			_container.Register(
 				//Types.FromAssemblyInThisApplication()
 				Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
 				.Where(t => typeof(IPage).IsAssignableFrom(t))
 				.Configure(component => component.LifeStyle.Transient.Interceptors<PageInterceptor>()));
-			//_container.Register(Types.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll"))
-			//	.Where(t => typeof(IPageAspect).IsAssignableFrom(t))
-			//	.WithService.FromInterface());
 			_container.Kernel.Resolver.AddSubResolver(new CollectionResolver(_container.Kernel, false));
 			_container.Register(Classes.FromAssemblyInDirectory(new AssemblyFilter(".", "*.dll")).BasedOn<IPageAspect>().WithService.FromInterface().AllowMultipleMatches());
 			// kind of a service locator - need it for page aspects
