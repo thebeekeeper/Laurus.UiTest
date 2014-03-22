@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest", "Laurus.UiTest\Laurus.UiTest.csproj", "{AB778236-0B08-45ED-A172-196D1D6CD06A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.Selenium", "Laurus.UiTest.Selenium\Laurus.UiTest.Selenium.csproj", "{607D0FDA-93BF-4FB1-8F0E-929F2AC01E2F}"
@@ -25,6 +27,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.Interactive", "Laurus.UiTest.Interactive\Laurus.UiTest.Interactive.csproj", "{DD8D6C38-95B0-411C-AB90-C14B8B98526A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.Interactive.Pages", "Laurus.UiTest.Interactive.Pages\Laurus.UiTest.Interactive.Pages.csproj", "{EAD9BA72-30A1-46A7-BE23-37268FDE9965}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{36B88AAC-5E01-4583-80D8-1383B258D155}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

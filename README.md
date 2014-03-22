@@ -3,9 +3,11 @@ Laurus.UiTest
 
 Page builder based UI Testing Meta-Framework
 
+I like the concept of a strongly typed interface that represents the controls on a page, so that's what this framework does.  
 
-How to use:
-I like the concept of a strongly typed interface that represents the controls on a page, so that's what this framework does.  A page for www.google.com might look like this:
+## Usage
+
+A page for www.google.com might look like this:
 
 ```
 public interface IGooglePage : IPage
@@ -32,8 +34,7 @@ public class GooglePageMap : PageMap<IGooglePage>
 Once you have a map, you're ready to write tests.  There are or will be various implementation of the base framework for different test drivers.  Right now there's only a Selenium one.  
 
 
-Install from NuGet with:
+## NuGet Installation
 
-Install-Package Laurus.UiTest
-
-Install-Package Laurus.UiTest.Selenium
+    Install-Package Laurus.UiTest
+    Install-Package Laurus.UiTest.Selenium
