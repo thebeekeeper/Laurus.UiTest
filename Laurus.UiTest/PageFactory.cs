@@ -35,7 +35,7 @@ namespace Laurus.UiTest
 			var pageMap = types.Where(x => typeof(PageMap<T>).IsAssignableFrom(x)).Where(_mapPredicate).FirstOrDefault();
 			if (pageMap == default(Type))
 			{
-				throw new MapNotFoundException(String.Format("Map not found for page {0}", typeof(T).Name));
+				throw new MapNotFoundException(typeof(T));
 			}
 			var mapInstance = (PageMap<T>)Activator.CreateInstance(pageMap);
 
@@ -48,12 +48,5 @@ namespace Laurus.UiTest
 		private readonly INativeLocatorFactory _locators;
 		private readonly IControlRegistry _controlRegistry;
 		private readonly Func<Type, bool> _mapPredicate;
-	}
-
-    public class MapNotFoundException : Exception
-	{
-		public MapNotFoundException(string message)
-			: base(message)
-		{ }
 	}
 }

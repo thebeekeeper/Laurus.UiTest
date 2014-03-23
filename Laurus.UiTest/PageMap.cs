@@ -31,11 +31,21 @@ namespace Laurus.UiTest
             AddToMap(control, name.ToString(), value);
 		}
 
+		public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, IEnumerable<string> values)
+		{
+            // TODO: add collection of locators - maybe replace Locator in the dictionary?
+		}
+
 		public Locator GetLocator(string property)
 		{
+            if(!_locators.ContainsKey(property))
+			{
+				throw new ControlNotMappedException(property);
+			}
 			return _locators[property];
 		}
 
 		private Dictionary<string, Locator> _locators;
 	}
+
 }

@@ -65,6 +65,11 @@ namespace Laurus.UiTest
 			return methodInfo.ReturnType;
 		}
 
+        public static bool IsCollection(this IMessage msg)
+		{
+			return false;
+		}
+
 		private static readonly string MethodName = "__MethodName";
 	}
 }

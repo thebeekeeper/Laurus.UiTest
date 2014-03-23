@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\IStatic.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="INativeLocatorFactory.cs" />
     <Compile Include="Locator.cs" />
     <Compile Include="LocatorKey.cs" />
