@@ -13,7 +13,7 @@ namespace AppiumSample
 {
 	public class TestClass1 : IUseFixture<AppiumFixture>
 	{
-//		[Fact]
+		//[Fact]
 		public void MyTest()
 		{
 			var bioPage = _fixture.Test.GetPage<BioPage>();

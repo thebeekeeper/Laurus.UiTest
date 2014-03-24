@@ -26,7 +26,7 @@ namespace Laurus.UiTest.Selenium
 				ImplicitWait = builder.ImplicitWait,
 				RemoteHost = remoteHost,
 			};
-			return new SeleniumTest(null, startupParams);
+			return new SeleniumTest(builder.Capabilities, startupParams);
 		}
 
         public static ITest StartAt(this ITest test, string url)
