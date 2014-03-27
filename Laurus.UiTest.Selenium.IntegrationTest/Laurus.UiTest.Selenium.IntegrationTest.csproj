@@ -62,6 +62,7 @@
     <Compile Include="ClickableDiscoveryTests.cs" />
     <Compile Include="CollectionTests.cs" />
     <Compile Include="DummyAspect.cs" />
+    <Compile Include="HeadlessTests.cs" />
     <Compile Include="MapGenTests.cs" />
     <Compile Include="NewMapSample.cs" />
     <Compile Include="Pages\IGoogleHomePage.cs" />

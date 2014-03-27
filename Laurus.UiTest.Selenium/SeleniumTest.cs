@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.PhantomJS;
 
 namespace Laurus.UiTest.Selenium
 {
@@ -27,18 +28,37 @@ namespace Laurus.UiTest.Selenium
 				case BrowserType.Chrome:
 					_driver = new ChromeDriver();
 					break;
+				case BrowserType.PhantomJs:
+					try
+					{
+						_driver = new PhantomJSDriver();
+					}
+                    catch(Exception e)
+					{
+						Console.WriteLine(e.Message);
+					}
+					break;
 				case BrowserType.Remote:
-					_driver = new ScreenshotRemoteWebDriver(new Uri(startupParams.RemoteHost), desiredCaps, TimeSpan.FromMinutes(5));
+					try
+					{
+						_driver = new ScreenshotRemoteWebDriver(new Uri(startupParams.RemoteHost), desiredCaps, TimeSpan.FromMinutes(5));
+					}
+                    catch(Exception e)
+					{
+						Console.WriteLine(e.Message);
+					}
 					break;
 				default:
 					throw new Exception("Browser type not found");
 			}
 			_driver.Manage().Timeouts().ImplicitlyWait(startupParams.ImplicitWait);
 			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
+            // TODO: auto discover controls and register them
 			controlReg.RegisterControl<IBaseControl, BaseControl>();
 			controlReg.RegisterControl<IEditable, Editable>();
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();
+			controlReg.RegisterControl<ISelect, Select>();
 			//_pageFactory = new PageFactory(new LocatorFactory(), controlReg, t => ((PlatformAttribute)t.GetCustomAttributes(typeof(PlatformAttribute),false).First()).Equals("Android"));
 			_pageFactory = new PageFactory(new LocatorFactory(), controlReg);
 		}

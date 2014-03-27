@@ -15,12 +15,20 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 		public void CanFindClickable()
 		{
 			var page = _fixture.Test.GetPage<IBiographyPage>();
+			_fixture.Test.TakeScreenshot(@"e:\temp\sshot.png");
 			page.Name.Text = "asdf";
 			page.Age.Text = "12";
 			page.Relationship.Text = "something";
 			page.NextButton.Click();
 			var result = page.Result.Text;
 			Assert.Equal("asdf", result);
+		}
+
+        [Fact]
+        public void CanFindSelect()
+		{
+			var page = _fixture.Test.GetPage<IBiographyPage>();
+			page.PetPreference.SelectedText = "rats";
 		}
 
 		public void SetFixture(WebFixture data)

@@ -25,6 +25,13 @@ namespace Laurus.UiTest
 			return test;
 		}
 
+        public static TestBuilder WithHeadless(this TestBuilder test)
+		{
+			//test.Browser = BrowserType.Remote;
+			test.Browser = BrowserType.PhantomJs;
+			return test;
+		}
+
         public static TestBuilder ImplicitWait(this TestBuilder test, TimeSpan implicitWait)
 		{
 			test.ImplicitWait = implicitWait;

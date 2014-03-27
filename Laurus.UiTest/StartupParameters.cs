@@ -11,6 +11,11 @@ namespace Laurus.UiTest
 		public BrowserType BrowserType { get; set; }
 		public string RemoteHost { get; set; }
 		public TimeSpan ImplicitWait { get; set; }
+
+        public StartupParameters()
+		{
+			ImplicitWait = TimeSpan.FromSeconds(0);
+		}
 	}
 
 	public enum BrowserType
@@ -18,6 +23,7 @@ namespace Laurus.UiTest
 		Firefox,
 		Chrome,
 		InternetExplorer,
-		Remote
+		Remote,
+        PhantomJs,
 	}
 }

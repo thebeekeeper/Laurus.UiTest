@@ -18,7 +18,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest.Pages
         public GoogleMap()
 		{
 			AddToMap(x => x.SearchBox, LocatorKey.Name, "q");
-			AddToMap(x => x.SearchButton, LocatorKey.Name, "btnQ");
+			AddToMap(x => x.SearchButton, LocatorKey.Name, "btnG");
 		}
 	}
 }
