@@ -11,7 +11,8 @@ namespace Laurus.UiTest
 		/// <summary>
 		/// Can be a file path or URI
 		/// </summary>
-		string TargetApplication { get; set; }
+        // what was this for???
+		//string TargetApplication { get; set; }
 
 		/// <summary>
 		/// Builds a page of the given type

@@ -14,7 +14,7 @@ namespace Laurus.UiTest.Selenium
 {
 	public class SeleniumTest : ITest
 	{
-		string ITest.TargetApplication { get; set; }
+		//string ITest.TargetApplication { get; set; }
 
 		public SeleniumTest(Dictionary<string, object> parameters, StartupParameters startupParams)
 		{
