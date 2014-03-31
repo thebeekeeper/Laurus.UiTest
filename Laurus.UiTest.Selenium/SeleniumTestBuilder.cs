@@ -15,7 +15,14 @@ namespace Laurus.UiTest.Selenium
 				ImplicitWait = builder.ImplicitWait,
 				RemoteHost = "",
 			};
-			return new SeleniumTest(builder.Capabilities, startupParams);
+            try
+			{
+				return new SeleniumTest(builder.Capabilities, startupParams);
+			}
+            catch(Exception e)
+			{
+                throw new TestInitializationException("Failed to initialize test driver", e);
+			}
 		}
 
         public static ITest UsingSeleniumRemote(this TestBuilder builder, string remoteHost)
@@ -26,7 +33,14 @@ namespace Laurus.UiTest.Selenium
 				ImplicitWait = builder.ImplicitWait,
 				RemoteHost = remoteHost,
 			};
-			return new SeleniumTest(builder.Capabilities, startupParams);
+            try
+			{
+				return new SeleniumTest(builder.Capabilities, startupParams);
+			}
+            catch(Exception e)
+			{
+                throw new TestInitializationException("Failed to initialize test driver", e);
+			}
 		}
 
         public static ITest StartAt(this ITest test, string url)
