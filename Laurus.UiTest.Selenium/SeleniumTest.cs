@@ -59,6 +59,7 @@ namespace Laurus.UiTest.Selenium
 			controlReg.RegisterControl<IClickable, Clickable>();
 			controlReg.RegisterControl<IStatic, Static>();
 			controlReg.RegisterControl<ISelect, Select>();
+			controlReg.RegisterControl<ICollection<IBaseControl>, object>();
 			//_pageFactory = new PageFactory(new LocatorFactory(), controlReg, t => ((PlatformAttribute)t.GetCustomAttributes(typeof(PlatformAttribute),false).First()).Equals("Android"));
 			_pageFactory = new PageFactory(new LocatorFactory(), controlReg);
 		}

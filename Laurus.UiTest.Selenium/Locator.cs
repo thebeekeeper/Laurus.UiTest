@@ -19,42 +19,31 @@ namespace Laurus.UiTest.Selenium
 			{
 				this.By = By.Id(locator.Value);
 			}
-			if (locator.Key.Equals(LocatorKey.Class.ToString()))
+			else if (locator.Key.Equals(LocatorKey.Class.ToString()))
 			{
 				this.By = By.ClassName(locator.Value);
 			}
-			if (locator.Key.Equals(LocatorKey.Css.ToString()))
+			else if (locator.Key.Equals(LocatorKey.Css.ToString()))
 			{
 				this.By = By.CssSelector(locator.Value);
 			}
-			if (locator.Key.Equals(LocatorKey.Name.ToString()))
+			else if (locator.Key.Equals(LocatorKey.Name.ToString()))
 			{
 				this.By = By.Name(locator.Value);
 			}
-            if(locator.Key.Equals(LocatorKey.TagName.ToString()))
+            else if(locator.Key.Equals(LocatorKey.TagName.ToString()))
 			{
 				this.By = By.TagName(locator.Value);
 			}
-            if(locator.Key.Equals(LocatorKey.Xpath.ToString()))
+            else if(locator.Key.Equals(LocatorKey.Xpath.ToString()))
 			{
 				this.By = By.XPath(locator.Value);
 			}
+            else
+			{
+				this.By = By.CssSelector(string.Format("[{0}={1}]", locator.Key, locator.Value));
+			}
 		}
-
-		//public SeleniumLocator(Locator locator) : base(Find, InternalFindElements)
-		//{
-		//	this.By = By.Name(locator.Value);
-		//}
-
-		//private static IWebElement Find(ISearchContext context)
-		//{
-		//	throw new NotImplementedException();
-		//}
-
-		//private static ReadOnlyCollection<IWebElement> InternalFindElements(ISearchContext context)
-		//{
-		//	throw new NotImplementedException();
-		//}
 
 		public By By { get; set; }
 	}

@@ -17,13 +17,18 @@ namespace Laurus.UiTest
         public PageMap(string defaultLocatorKey) : this()
 		{
 			_defaultLocator = defaultLocatorKey;
+            foreach(var x in typeof(T).GetProperties())
+			{
+				_locators.Add(x.Name, new Locator() { Key = _defaultLocator, Value = x.Name });
+			}
 		}
 
 		public void AddToMap(Expression<Func<T, IBaseControl>> control, string name, string value)
 		{
 			var propertyExpression = (MemberExpression)control.Body;
 			var key = propertyExpression.Member.Name;
-			_locators.Add(key, new Locator() { Key = name, Value = value });
+			//_locators.Add(key, new Locator() { Key = name, Value = value });
+			_locators[key] = new Locator() { Key = name, Value = value };
 		}
 
 		public void AddToMap(Expression<Func<T, IBaseControl>> control, LocatorKey name, string value)
@@ -48,6 +53,7 @@ namespace Laurus.UiTest
 		public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, IEnumerable<string> values)
 		{
             // TODO: add collection of locators - maybe replace Locator in the dictionary?
+			//_locators.Add("ListItems", new Locator() { Key = "test", Value = "value" });
 		}
 
 		public Locator GetLocator(string property)

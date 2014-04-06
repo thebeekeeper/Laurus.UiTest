@@ -50,6 +50,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="instrumentedpage.html" />
     <Content Include="biography.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

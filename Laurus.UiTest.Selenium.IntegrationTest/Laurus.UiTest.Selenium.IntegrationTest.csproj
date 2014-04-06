@@ -68,6 +68,7 @@
     <Compile Include="NewMapSample.cs" />
     <Compile Include="Pages\BiographyPageMapDefaults.cs" />
     <Compile Include="Pages\IGoogleHomePage.cs" />
+    <Compile Include="Pages\IInstrumentedPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteFixture.cs" />
     <Compile Include="RotationTests.cs" />
