@@ -61,10 +61,12 @@
   <ItemGroup>
     <Compile Include="ClickableDiscoveryTests.cs" />
     <Compile Include="CollectionTests.cs" />
+    <Compile Include="DefaultLocatorTests.cs" />
     <Compile Include="DummyAspect.cs" />
     <Compile Include="HeadlessTests.cs" />
     <Compile Include="MapGenTests.cs" />
     <Compile Include="NewMapSample.cs" />
+    <Compile Include="Pages\BiographyPageMapDefaults.cs" />
     <Compile Include="Pages\IGoogleHomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteFixture.cs" />
