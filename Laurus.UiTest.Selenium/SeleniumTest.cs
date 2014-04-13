@@ -50,15 +50,8 @@ namespace Laurus.UiTest.Selenium
 					throw new Exception("Browser type not found");
 			}
 			_driver.Manage().Timeouts().ImplicitlyWait(startupParams.ImplicitWait);
-			IControlRegistry controlReg = new ControlRegistry(new object[] { _driver });
-            // TODO: auto discover controls and register them
-			controlReg.RegisterControl<IBaseControl, BaseControl>();
-			controlReg.RegisterControl<IEditable, Editable>();
-			controlReg.RegisterControl<IClickable, Clickable>();
-			controlReg.RegisterControl<IStatic, Static>();
-			controlReg.RegisterControl<ISelect, Select>();
-			controlReg.RegisterControl<ICollection<IBaseControl>, object>();
-			//_pageFactory = new PageFactory(new LocatorFactory(), controlReg, t => ((PlatformAttribute)t.GetCustomAttributes(typeof(PlatformAttribute),false).First()).Equals("Android"));
+			var controlReg = new ControlRegistry(new[] { _driver }) as IControlRegistry;
+			controlReg.RegisterLocalControls();
 			_pageFactory = new PageFactory(new LocatorFactory(), controlReg, mapSelector);
 		}
 

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>login test page</title>
+		<script type="text/javascript">
+            function loginClicked() {
+                var r = document.getElementById('result');
+			    // ha the sample test found an issue - innerText works in chrome but not ff, so using innerHTML
+			    //r.innerHTML = n.value;
+                var u = document.getElementById('username').value;
+                var p = document.getElementById('password').value;
+                r.innerHTML = u + '|' + p;
+            }
+		</script>
+</head>
+<body>
+    <div id="header">
+        <h1>This is the login page</h1>
+    </div>
+    <div id="login-box">
+        <div>
+            <input type="text" id="username" />
+        </div>
+        <div>
+            <input type="password" id="password" />
+        </div>
+        <div>
+            <a href="#" id="submit-login" onclick="loginClicked()">submit</a>
+        </div>
+    </div>
+
+    <div id="result">
+    </div>
+</body>
+</html>

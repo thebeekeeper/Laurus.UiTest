@@ -12,5 +12,10 @@ namespace Laurus.UiTest
 		object GetControl(Type controlType, ILocator locator);
 
 		void RegisterControl<TControl, TImpl>();
+
+        /// <summary>
+        /// Registers all controls in the current directory
+        /// </summary>
+		void RegisterLocalControls();
 	}
 }

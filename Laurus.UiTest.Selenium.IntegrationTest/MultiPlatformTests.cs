@@ -33,6 +33,21 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			test.Quit();
 		}
 
+		[Fact]
+		public void Page_With_SubPage()
+		{
+			var test = new TestBuilder()
+				.WithHeadless()
+				.UsingSeleniumDriver();
+			var page = test.GetPage<ILoginPage>();
+			page.Login.Username.Text = "asdf";
+			page.Login.Password.Text = "password";
+			page.Login.Submit.Click();
+
+            Assert.Equal("asdf|password", page.Header.Text);
+			test.Quit();
+		}
+
         public bool SelectMap(Type mapType)
 		{
 			var mapAttrValue = "OtherPlatform";

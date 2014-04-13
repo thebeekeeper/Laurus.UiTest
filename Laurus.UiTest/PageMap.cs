@@ -59,6 +59,12 @@ namespace Laurus.UiTest
 			_locators[key] = new CollectionLocator(name, values);
 		}
 
+		//public void AddToMap(Expression<Func<T, IPage>> subPage, string name, string value)
+		//{
+		// adds a sub-page to the map - not sure if this is how to do it since it's another special case 
+        // to add to the page proxy builder
+		//}
+
 		public Locator GetLocator(string property)
 		{
             if(!_locators.ContainsKey(property))

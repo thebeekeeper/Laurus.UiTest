@@ -29,6 +29,12 @@ namespace Laurus.UiTest
 				// should only ever be getter - it doesn't make sense to set a page element
 				throw new InvalidOperationException("Can't set page elements");
 			}
+            if(msg.IsPage())
+			{
+                // need to build another page proxy here?
+				var returnMessage = new ReturnMessage(new object(), null, 0, methodCall.LogicalCallContext, methodCall);
+				return returnMessage;
+			}
 			var locator = _pageMap.GetLocator(msg.PropertyName());
 			if (locator.GetType().Equals(typeof(CollectionLocator)))
 			{
@@ -91,6 +97,13 @@ namespace Laurus.UiTest
         public static bool IsCollection(this IMessage msg)
 		{
 			return false;
+		}
+
+        public static bool IsPage(this IMessage msg)
+		{
+			var m = (IMethodCallMessage)msg;
+			var methodInfo = m.MethodBase as MethodInfo;
+			return typeof(IPage).IsAssignableFrom(methodInfo.ReturnType);
 		}
 
 		private static readonly string MethodName = "__MethodName";

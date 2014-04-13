@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +35,31 @@ namespace Laurus.UiTest
 			_controlTypes.Add(typeof(TControl), typeof(TImpl));
 		}
 
+		void IControlRegistry.RegisterLocalControls()
+		{
+            // TODO: auto discover controls and register them
+			//controlReg.RegisterControl<IBaseControl, BaseControl>();
+			//controlReg.RegisterControl<IEditable, Editable>();
+			//controlReg.RegisterControl<IClickable, Clickable>();
+			//controlReg.RegisterControl<IStatic, Static>();
+			//controlReg.RegisterControl<ISelect, Select>();
+			var dirAssemblies = Directory.GetFiles(".", "*.dll");
+			foreach (var d in dirAssemblies)
+			{
+				var assembly = Assembly.LoadFrom(d);
+				var types = assembly.GetTypes().Where(t => typeof(IBaseControl).IsAssignableFrom(t)).Where(t => t.IsInterface == false);
+				foreach (var t in types)
+				{
+                    // this assumes the last interface is the one we're looking for, which seems to work so far
+					var controlType = t.GetInterfaces().Last();
+					var implType = t;
+					_controlTypes.Add(controlType, implType);
+				}
+			}
+		}
+
 		private IDictionary<Type, Type> _controlTypes;
 		private object[] _ctorParams;
+
 	}
 }
