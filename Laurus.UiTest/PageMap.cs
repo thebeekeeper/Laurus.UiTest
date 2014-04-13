@@ -52,8 +52,11 @@ namespace Laurus.UiTest
 
 		public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, IEnumerable<string> values)
 		{
+			var propertyExpression = (MemberExpression)control.Body;
+			var key = propertyExpression.Member.Name;
             // TODO: add collection of locators - maybe replace Locator in the dictionary?
 			//_locators.Add("ListItems", new Locator() { Key = "test", Value = "value" });
+			_locators[key] = new CollectionLocator(name, values);
 		}
 
 		public Locator GetLocator(string property)

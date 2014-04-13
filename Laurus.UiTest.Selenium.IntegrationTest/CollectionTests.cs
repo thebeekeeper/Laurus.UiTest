@@ -14,8 +14,9 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 		public void Can_Find_List_Items_By_Id()
 		{
 			var page = _fixture.Test.GetPage<IBiographyPage>();
-			var itemCount = page.ListItems.Count();
-			Assert.Equal(3, itemCount);
+			var items = page.ListItems;
+			Assert.Equal(3, items.Count());
+			Assert.Equal("three", items.ElementAt(2).Text);
 		}
 
 		public void SetFixture(WebFixture data)

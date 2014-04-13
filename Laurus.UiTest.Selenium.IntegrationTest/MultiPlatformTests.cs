@@ -18,6 +18,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			    .UsingSeleniumDriver();
 			var page = test.GetPage<IBiographyPage2>();
 			Assert.Equal("By.Id: biographyNext", page.NextButton.ToString());
+			test.Quit();
 		}
 
 		[Fact]
@@ -29,6 +30,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 				.UsingSeleniumDriver();
 			var page = test.GetPage<IBiographyPage2>();
 			Assert.Equal("By.Id: biographyNext", page.NextButton.ToString());
+			test.Quit();
 		}
 
         public bool SelectMap(Type mapType)

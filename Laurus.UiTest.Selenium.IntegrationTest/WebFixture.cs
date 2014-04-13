@@ -17,6 +17,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			var startUrl = "file://" + targetPath;
 			Test = new TestBuilder()
 				.WithFirefox()
+                //.WithHeadless()
                 .UsingSeleniumDriver()
                 .StartAt(startUrl);
 		}

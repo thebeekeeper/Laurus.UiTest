@@ -24,20 +24,35 @@ namespace Laurus.UiTest
             var methodCall = msg as IMethodCallMessage;
             
             object nativeControl = null;
-            if(msg.IsGetter())
-			{
-				var locator = _pageMap.GetLocator(msg.PropertyName());
-				var nativeLocator = _converter.Build(locator);
-				nativeControl = _controlRegistry.GetControl(msg.PropertyType(), nativeLocator);
-			}
-			else
+            if(!msg.IsGetter())
 			{
 				// should only ever be getter - it doesn't make sense to set a page element
 				throw new InvalidOperationException("Can't set page elements");
 			}
+			var locator = _pageMap.GetLocator(msg.PropertyName());
+			if (locator.GetType().Equals(typeof(CollectionLocator)))
+			{
+				var cl = (CollectionLocator)locator;
 
-            var returnMessage = new ReturnMessage(nativeControl, null, 0, methodCall.LogicalCallContext, methodCall);
-			return returnMessage;
+				var nativeLocators = from l in cl.Values
+									 select _converter.Build(new Locator() { Key = cl.Key, Value = l });
+				//var nativeControls = from n in nativeLocators
+				//					 select _controlRegistry.GetControl(msg.PropertyType(), n);
+				ICollection<Controls.IStatic> nativeControls = new List<Controls.IStatic>();
+                foreach(var n in nativeLocators)
+				{
+					nativeControls.Add((Controls.IStatic)_controlRegistry.GetControl(msg.InnerPropertyType(), n));
+				}
+				var returnMessage = new ReturnMessage(nativeControls, null, 0, methodCall.LogicalCallContext, methodCall);
+				return returnMessage;
+			}
+			else
+			{
+				var nativeLocator = _converter.Build(locator);
+				nativeControl = _controlRegistry.GetControl(msg.PropertyType(), nativeLocator);
+				var returnMessage = new ReturnMessage(nativeControl, null, 0, methodCall.LogicalCallContext, methodCall);
+				return returnMessage;
+			}
 		}
 
 		private readonly PageMap<T> _pageMap;
@@ -63,6 +78,12 @@ namespace Laurus.UiTest
 			var m = (IMethodCallMessage)msg;
 			var methodInfo = m.MethodBase as MethodInfo;
 			return methodInfo.ReturnType;
+		}
+
+        public static Type InnerPropertyType(this IMessage msg)
+		{
+			var t = msg.PropertyType();
+			return t.GetGenericArguments().First();
 		}
 
         public static bool IsCollection(this IMessage msg)
