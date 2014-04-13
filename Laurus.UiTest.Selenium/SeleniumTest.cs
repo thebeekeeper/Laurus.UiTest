@@ -14,9 +14,7 @@ namespace Laurus.UiTest.Selenium
 {
 	public class SeleniumTest : ITest
 	{
-		//string ITest.TargetApplication { get; set; }
-
-		public SeleniumTest(Dictionary<string, object> parameters, StartupParameters startupParams)
+        public SeleniumTest(Dictionary<string, object> parameters, StartupParameters startupParams, Func<Type, bool> mapSelector)
 		{
 			var desiredCaps = new DesiredCapabilities(parameters);
 
@@ -61,8 +59,12 @@ namespace Laurus.UiTest.Selenium
 			controlReg.RegisterControl<ISelect, Select>();
 			controlReg.RegisterControl<ICollection<IBaseControl>, object>();
 			//_pageFactory = new PageFactory(new LocatorFactory(), controlReg, t => ((PlatformAttribute)t.GetCustomAttributes(typeof(PlatformAttribute),false).First()).Equals("Android"));
-			_pageFactory = new PageFactory(new LocatorFactory(), controlReg);
+			_pageFactory = new PageFactory(new LocatorFactory(), controlReg, mapSelector);
 		}
+
+		public SeleniumTest(Dictionary<string, object> parameters, StartupParameters startupParams)
+			: this(parameters, startupParams, x => true)
+		{ }
 
 		T ITest.GetPage<T>()
 		{

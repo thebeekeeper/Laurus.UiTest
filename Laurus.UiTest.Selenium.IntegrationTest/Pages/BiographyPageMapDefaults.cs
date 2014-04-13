@@ -30,4 +30,13 @@ namespace Laurus.UiTest.Selenium.IntegrationTest.Pages
 			AddToMap(x => x.PetPreference, LocatorKey.Id, "pet-prefs");
 		}
 	}
+
+    [Platform("OtherPlatform")]
+    public class BiographyPageMapOtherPlatform : PageMap<IBiographyPage2>
+	{
+        public BiographyPageMapOtherPlatform()
+		{
+			AddToMap(x => x.NextButton, LocatorKey.Id, "biographyNext");
+		}
+	}
 }

@@ -17,7 +17,7 @@ namespace Laurus.UiTest.Selenium
 			};
             try
 			{
-				return new SeleniumTest(builder.Capabilities, startupParams);
+				return new SeleniumTest(builder.Capabilities, startupParams, builder.PageMapSelector);
 			}
             catch(Exception e)
 			{
@@ -35,7 +35,7 @@ namespace Laurus.UiTest.Selenium
 			};
             try
 			{
-				return new SeleniumTest(builder.Capabilities, startupParams);
+				return new SeleniumTest(builder.Capabilities, startupParams, builder.PageMapSelector);
 			}
             catch(Exception e)
 			{

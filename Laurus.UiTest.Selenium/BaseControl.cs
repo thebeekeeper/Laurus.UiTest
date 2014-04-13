@@ -37,6 +37,11 @@ namespace Laurus.UiTest.Selenium
 			return _driver.FindElement(_by);
 		}
 
+		public override string ToString()
+		{
+			return _by.ToString();
+		}
+
 		private readonly IWebDriver _driver;
 		private By _by;
 	}
