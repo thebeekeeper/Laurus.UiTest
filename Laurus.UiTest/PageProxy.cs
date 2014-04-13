@@ -36,14 +36,16 @@ namespace Laurus.UiTest
 
 				var nativeLocators = from l in cl.Values
 									 select _converter.Build(new Locator() { Key = cl.Key, Value = l });
-				//var nativeControls = from n in nativeLocators
-				//					 select _controlRegistry.GetControl(msg.PropertyType(), n);
-				ICollection<Controls.IStatic> nativeControls = new List<Controls.IStatic>();
-                foreach(var n in nativeLocators)
+				Type generic = typeof(List<>);
+				var constructed = generic.MakeGenericType(msg.InnerPropertyType());
+				var listInst = Activator.CreateInstance(constructed);
+				var addMethod = constructed.GetMethod("Add");
+				foreach (var n in nativeLocators)
 				{
-					nativeControls.Add((Controls.IStatic)_controlRegistry.GetControl(msg.InnerPropertyType(), n));
+                    var control = _controlRegistry.GetControl(msg.InnerPropertyType(), n);
+					addMethod.Invoke(listInst, new[] { control });
 				}
-				var returnMessage = new ReturnMessage(nativeControls, null, 0, methodCall.LogicalCallContext, methodCall);
+				var returnMessage = new ReturnMessage(listInst, null, 0, methodCall.LogicalCallContext, methodCall);
 				return returnMessage;
 			}
 			else
