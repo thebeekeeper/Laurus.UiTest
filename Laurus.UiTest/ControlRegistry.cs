@@ -20,17 +20,10 @@ namespace Laurus.UiTest
 		{
 			if (_controlTypes.ContainsKey(controlType))
 			{
-				if (typeof(ICollection<>).IsAssignableFrom(controlType))
-				{
-					Console.WriteLine("control collection requested");
-				}
-				else
-				{
-					var implType = _controlTypes[controlType];
-					var inst = Activator.CreateInstance(implType, _ctorParams);
-					((IBaseControl)inst).Find(locator);
-					return inst;
-				}
+				var implType = _controlTypes[controlType];
+				var inst = Activator.CreateInstance(implType, _ctorParams);
+				((IBaseControl)inst).Find(locator);
+				return inst;
 			}
 			throw new Exception("Attempt to build non-existent control");
 		}

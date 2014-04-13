@@ -15,7 +15,7 @@ namespace SampleWebApp
 		IEditable Age { get; set; }
 		IEditable Relationship { get; set; }
 		IEditable Result { get; set; }
-		List<IStatic> ListItems { get; set; }
+		ICollection<IStatic> ListItems { get; set; }
 		ISelect PetPreference { get; }
 	}
 

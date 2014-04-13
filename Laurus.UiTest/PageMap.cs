@@ -50,12 +50,12 @@ namespace Laurus.UiTest
 			AddToMap(control, _defaultLocator, value);
 		}
 
+        // TODO: this should take IReadOnlyCollection because it doesn't make sense to add to the collection later on
+        // need to update to .NET 4.5+ for IReadOnlyCollection
 		public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, IEnumerable<string> values)
 		{
 			var propertyExpression = (MemberExpression)control.Body;
 			var key = propertyExpression.Member.Name;
-            // TODO: add collection of locators - maybe replace Locator in the dictionary?
-			//_locators.Add("ListItems", new Locator() { Key = "test", Value = "value" });
 			_locators[key] = new CollectionLocator(name, values);
 		}
 
