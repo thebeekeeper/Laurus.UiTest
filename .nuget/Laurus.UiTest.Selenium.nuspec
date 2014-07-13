@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>Laurus.UiTest.Selenium</id>
-        <version>2.0.0</version>
+        <version>$version$</version>
         <title>Laurus UiTest Selenium</title>
         <authors>ngamroth</authors>
         <owners>ngamroth</owners>
@@ -13,7 +13,7 @@
         <copyright>Copyright 2013</copyright>
         <tags>UI Automation Testing</tags>
         <dependencies>
-            <dependency id="Laurus.UiTest" version="1.0.0"></dependency>
+            <dependency id="Laurus.UiTest" version="2.0.0"></dependency>
             <dependency id="Selenium.WebDriver" version="2.35.0"></dependency>
         </dependencies>
     </metadata>

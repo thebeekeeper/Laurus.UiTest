@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>Laurus.UiTest</id>
-        <version>2.0.0</version>
+        <version>$version$</version>
         <title>Laurus UiTest</title>
         <authors>ngamroth</authors>
         <owners>ngamroth</owners>
