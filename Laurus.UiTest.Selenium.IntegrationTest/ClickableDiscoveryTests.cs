@@ -31,6 +31,14 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			page.PetPreference.SelectedText = "rats";
 		}
 
+        [Fact]
+        public void CanGetLinkText()
+		{
+			var page = _fixture.Test.GetPage<IBiographyPage>();
+			var t = page.LinkWithText.Text;
+			Assert.Equal("link text", t);
+		}
+
 		public void SetFixture(WebFixture data)
 		{
 			_fixture = data;

@@ -33,7 +33,8 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			test.Quit();
 		}
 
-		[Fact]
+		//[Fact]
+        // i don't remember what this test is supposed to do
 		public void Page_With_SubPage()
 		{
 			var test = new TestBuilder()

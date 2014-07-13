@@ -17,6 +17,7 @@ namespace SampleWebApp
 		IEditable Result { get; set; }
 		ICollection<IStatic> ListItems { get; set; }
 		ISelect PetPreference { get; }
+		IClickable LinkWithText { get; }
 	}
 
     public class BioMap : PageMap<IBiographyPage>
@@ -30,6 +31,7 @@ namespace SampleWebApp
 			AddToMap(x => x.Result, "Name", "result");
 			AddToMap(x => x.ListItems, "Id", new[] { "item0", "item1", "item2" });
 			AddToMap(x => x.PetPreference, LocatorKey.Id, "pet-prefs");
+			AddToMap(x => x.LinkWithText, LocatorKey.Id, "linkWithText");
 		}
 	}
 }

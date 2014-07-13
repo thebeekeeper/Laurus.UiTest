@@ -9,5 +9,7 @@ namespace Laurus.UiTest.Controls
 	public interface IClickable : IBaseControl
 	{
 		void Click();
+
+		string Text { get; }
 	}
 }

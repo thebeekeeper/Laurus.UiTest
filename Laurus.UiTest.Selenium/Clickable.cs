@@ -18,5 +18,7 @@ namespace Laurus.UiTest.Selenium
 		{
 			this.GetNative().Click();
 		}
+
+		public string Text { get { return this.GetNative().Text; } }
 	}
 }
