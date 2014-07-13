@@ -67,11 +67,19 @@ namespace Laurus.UiTest.Selenium
 		void ITest.Navigate(string target)
 		{
 			if (target.Equals("back"))
+			{
 				_driver.Navigate().Back();
-			else
+				return;
+			}
+			if (target.StartsWith("http") || target.StartsWith("file"))
 			{
 				_driver.Navigate().GoToUrl(target);
+				return;
 			}
+			var current = new Uri(_driver.Url);
+			var u = String.Format("{0}://{1}{2}", current.Scheme, current.Host, target);
+			var destination = new Uri(u, UriKind.Absolute);
+			_driver.Navigate().GoToUrl(destination.AbsoluteUri);
 		}
 
 		void ITest.TakeScreenshot(string file)

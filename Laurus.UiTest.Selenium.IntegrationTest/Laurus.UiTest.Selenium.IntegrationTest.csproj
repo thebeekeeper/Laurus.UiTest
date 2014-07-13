@@ -66,6 +66,7 @@
     <Compile Include="HeadlessTests.cs" />
     <Compile Include="MapGenTests.cs" />
     <Compile Include="MultiPlatformTests.cs" />
+    <Compile Include="NavigationTests.cs" />
     <Compile Include="NewMapSample.cs" />
     <Compile Include="Pages\BiographyPageMapDefaults.cs" />
     <Compile Include="Pages\IGoogleHomePage.cs" />
