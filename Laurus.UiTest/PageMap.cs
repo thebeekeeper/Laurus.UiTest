@@ -59,6 +59,19 @@ namespace Laurus.UiTest
 			_locators[key] = new CollectionLocator(name, values);
 		}
 
+        public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, Func<int, string> locator)
+		{
+			var propertyExpression = (MemberExpression)control.Body;
+			var key = propertyExpression.Member.Name;
+            // TODO: don't do this
+			var s = new string[100];
+			for (int i = 0; i < s.Length; i++)
+			{
+				s[i] = locator.Invoke(i);
+			}
+			_locators[key] = new CollectionLocator(name, s);
+		}
+
 		//public void AddToMap(Expression<Func<T, IPage>> subPage, string name, string value)
 		//{
 		// adds a sub-page to the map - not sure if this is how to do it since it's another special case 

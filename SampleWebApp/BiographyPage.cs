@@ -29,7 +29,8 @@ namespace SampleWebApp
 			AddToMap(x => x.Age, "Name", "ageEdit");
 			AddToMap(x => x.Relationship, "Name", "relationEdit");
 			AddToMap(x => x.Result, "Name", "result");
-			AddToMap(x => x.ListItems, "Id", new[] { "item0", "item1", "item2" });
+			//AddToMap(x => x.ListItems, "Id", new[] { "item0", "item1", "item2" });
+			AddToMap(x => x.ListItems, "Id", i => "item" + i.ToString());
 			AddToMap(x => x.PetPreference, LocatorKey.Id, "pet-prefs");
 			AddToMap(x => x.LinkWithText, LocatorKey.Id, "linkWithText");
 		}
