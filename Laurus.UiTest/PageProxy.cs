@@ -38,6 +38,14 @@ namespace Laurus.UiTest
 			var locator = _pageMap.GetLocator(msg.PropertyName());
 			if (locator.GetType().Equals(typeof(CollectionLocator)))
 			{
+                // trying to use custon IEnumerable - .ElementAt doesn't work since the current index is set to 0
+				//var cl = (CollectionLocator)locator;
+				//Type generic = typeof(ControlEnumeration<>);
+				//var constructed = generic.MakeGenericType(msg.InnerPropertyType());
+				//var listInst = Activator.CreateInstance(constructed, cl, _converter, _controlRegistry);
+				//var returnMessage = new ReturnMessage(listInst, null, 0, methodCall.LogicalCallContext, methodCall);
+				//return returnMessage;
+
 				var cl = (CollectionLocator)locator;
 
 				var nativeLocators = from l in cl.Values
@@ -48,7 +56,7 @@ namespace Laurus.UiTest
 				var addMethod = constructed.GetMethod("Add");
 				foreach (var n in nativeLocators)
 				{
-                    var control = _controlRegistry.GetControl(msg.InnerPropertyType(), n);
+					var control = _controlRegistry.GetControl(msg.InnerPropertyType(), n);
 					addMethod.Invoke(listInst, new[] { control });
 				}
 				var returnMessage = new ReturnMessage(listInst, null, 0, methodCall.LogicalCallContext, methodCall);

@@ -59,11 +59,12 @@ namespace Laurus.UiTest
 			_locators[key] = new CollectionLocator(name, values);
 		}
 
-        public void AddToMap<TControl>(Expression<Func<T, ICollection<TControl>>> control, string name, Func<int, string> locator)
+        public void AddToMap<TControl>(Expression<Func<T, IEnumerable<TControl>>> control, string name, Func<int, string> locator)
 		{
 			var propertyExpression = (MemberExpression)control.Body;
 			var key = propertyExpression.Member.Name;
             // TODO: don't do this
+            // should this just be a ControlEnumeration?
 			var s = new string[100];
 			for (int i = 0; i < s.Length; i++)
 			{

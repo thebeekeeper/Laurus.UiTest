@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlEnumeration.cs" />
     <Compile Include="Controls\ISelect.cs" />
     <Compile Include="Controls\IStatic.cs" />
     <Compile Include="Exceptions.cs" />
