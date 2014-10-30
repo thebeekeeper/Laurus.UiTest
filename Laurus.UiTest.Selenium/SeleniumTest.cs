@@ -88,6 +88,13 @@ namespace Laurus.UiTest.Selenium
 			screenshot.SaveAsFile(file, System.Drawing.Imaging.ImageFormat.Png);
 		}
 
+        string ITest.TakeScreenshot()
+		{
+			var file = System.IO.Path.Combine(System.IO.Path.GetTempPath(), Guid.NewGuid().ToString() + ".png");
+			((ITest)this).TakeScreenshot(file);
+			return file;
+		}
+
 		void ITest.RunScript(string script, Dictionary<string, object> parameters)
 		{
 			var jsExecutor = (IJavaScriptExecutor)_driver;

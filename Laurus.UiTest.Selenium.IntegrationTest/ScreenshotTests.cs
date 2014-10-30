@@ -17,6 +17,13 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			Assert.True(System.IO.File.Exists(path));
 		}
 
+        [Fact]
+        public void Can_Get_Automatic_Screenshot()
+		{
+			var file = _fixture.Test.TakeScreenshot();
+			Assert.True(System.IO.File.Exists(file));
+		}
+
 		public void SetFixture(WebFixture data)
 		{
 			_fixture = data;

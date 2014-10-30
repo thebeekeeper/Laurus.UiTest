@@ -33,6 +33,12 @@ namespace Laurus.UiTest
 		/// <param name="path">Full path of the file to save to</param>
 		void TakeScreenshot(string path);
 
+        /// <summary>
+        /// Takes a screenshot and saves it to a file
+        /// </summary>
+        /// <returns>Path to saved screenshot</returns>
+		string TakeScreenshot();
+
 		/// <summary>
 		/// Executes an arbirary script on the page under test
 		/// </summary>
