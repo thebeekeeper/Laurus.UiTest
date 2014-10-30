@@ -106,6 +106,11 @@ namespace Laurus.UiTest.Selenium
 			}
 		}
 
+        string ITest.Source()
+		{
+			return _driver.PageSource;
+		}
+
 		void ITest.Quit()
 		{
 			_driver.Quit();

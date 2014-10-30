@@ -47,6 +47,12 @@ namespace Laurus.UiTest
 		/// <param name="orientation"></param>
 		void SetOrientation(Orientation orientation);
 
+        /// <summary>
+        /// Retrieves the source code for the currently displayed page.
+        /// </summary>
+        /// <returns></returns>
+		string Source();
+
 		/// <summary>
 		/// Ends the tests and closes any associated target app/browser
 		/// </summary>

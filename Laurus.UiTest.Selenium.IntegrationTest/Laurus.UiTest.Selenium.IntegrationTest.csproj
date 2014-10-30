@@ -78,6 +78,7 @@
     <Compile Include="ScreenshotAspect.cs" />
     <Compile Include="ScreenshotTests.cs" />
     <Compile Include="TestBuilderTests.cs" />
+    <Compile Include="TestTests.cs" />
     <Compile Include="WebFixture.cs" />
   </ItemGroup>
   <ItemGroup>
