@@ -11,5 +11,6 @@ namespace Laurus.UiTest.Controls
 		void Find(ILocator locator);
 
 		bool IsVisible();
+		bool IsEnabled();
 	}
 }

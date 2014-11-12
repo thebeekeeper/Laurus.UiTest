@@ -1,4 +1,5 @@
 ﻿using Laurus.UiTest.Selenium.IntegrationTest.Pages;
+using Laurus.UiTest.WebDriver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,7 @@ namespace Laurus.UiTest.Selenium.IntegrationTest
 			home.SearchButton.Click();
 			test.Quit();
 		}
+
+	
 	}
 }

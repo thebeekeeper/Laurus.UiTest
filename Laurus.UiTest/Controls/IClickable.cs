@@ -11,5 +11,7 @@ namespace Laurus.UiTest.Controls
 		void Click();
 
 		string Text { get; }
+
+		void Tap();
 	}
 }

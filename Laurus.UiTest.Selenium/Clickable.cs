@@ -1,5 +1,6 @@
 ﻿using Laurus.UiTest.Controls;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace Laurus.UiTest.Selenium
 	{
 		public Clickable(IWebDriver driver)
 			: base(driver)
-		{ }
+		{
+			_driver = driver;
+		}
 
 		public void Click()
 		{
@@ -20,5 +23,12 @@ namespace Laurus.UiTest.Selenium
 		}
 
 		public string Text { get { return this.GetNative().Text; } }
+
+		public void Tap()
+		{
+            //((RemoteWebDriver)_driver).
+		}
+
+		private IWebDriver _driver;
 	}
 }

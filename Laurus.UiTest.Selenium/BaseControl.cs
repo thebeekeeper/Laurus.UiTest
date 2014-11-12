@@ -32,6 +32,18 @@ namespace Laurus.UiTest.Selenium
 			}
 		}
 
+        bool IBaseControl.IsEnabled()
+		{
+			try
+			{
+				return this.GetNative().Enabled;
+			}
+            catch (NoSuchElementException)
+			{
+				return false;
+			}
+		}
+
 		protected IWebElement GetNative()
 		{
 			return _driver.FindElement(_by);

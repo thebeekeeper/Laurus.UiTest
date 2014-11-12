@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest", "Laurus.UiTest\Laurus.UiTest.csproj", "{AB778236-0B08-45ED-A172-196D1D6CD06A}"
 EndProject
@@ -34,6 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.Selenium.UnitTest", "Laurus.UiTest.Selenium.UnitTest\Laurus.UiTest.Selenium.UnitTest.csproj", "{C7386BCD-42F2-421A-9D1E-2C5BB0C80B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.WebDriver", "Laurus.UiTest.WebDriver\Laurus.UiTest.WebDriver.csproj", "{ED2FD2F6-D718-44A3-A463-133963D889E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laurus.UiTest.WebDriver.UnitTest", "Laurus.UiTest.WebDriver.UnitTest\Laurus.UiTest.WebDriver.UnitTest.csproj", "{CFF10747-92E3-4628-B015-6D695C300122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,14 @@ Global
 		{C7386BCD-42F2-421A-9D1E-2C5BB0C80B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7386BCD-42F2-421A-9D1E-2C5BB0C80B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7386BCD-42F2-421A-9D1E-2C5BB0C80B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED2FD2F6-D718-44A3-A463-133963D889E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED2FD2F6-D718-44A3-A463-133963D889E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED2FD2F6-D718-44A3-A463-133963D889E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED2FD2F6-D718-44A3-A463-133963D889E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFF10747-92E3-4628-B015-6D695C300122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFF10747-92E3-4628-B015-6D695C300122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFF10747-92E3-4628-B015-6D695C300122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFF10747-92E3-4628-B015-6D695C300122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,5 +95,6 @@ Global
 		{057E0968-5094-4E10-B322-58CBA39FF66D} = {A67B18D5-C821-433D-BAB0-64D121E18C7F}
 		{EAD9BA72-30A1-46A7-BE23-37268FDE9965} = {A67B18D5-C821-433D-BAB0-64D121E18C7F}
 		{C7386BCD-42F2-421A-9D1E-2C5BB0C80B29} = {A67B18D5-C821-433D-BAB0-64D121E18C7F}
+		{CFF10747-92E3-4628-B015-6D695C300122} = {A67B18D5-C821-433D-BAB0-64D121E18C7F}
 	EndGlobalSection
 EndGlobal

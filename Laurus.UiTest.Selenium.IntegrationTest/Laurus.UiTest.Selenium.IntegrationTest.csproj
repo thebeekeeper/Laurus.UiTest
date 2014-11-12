@@ -90,6 +90,10 @@
       <Project>{607d0fda-93bf-4fb1-8f0e-929f2ac01e2f}</Project>
       <Name>Laurus.UiTest.Selenium</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Laurus.UiTest.WebDriver\Laurus.UiTest.WebDriver.csproj">
+      <Project>{ed2fd2f6-d718-44a3-a463-133963d889e4}</Project>
+      <Name>Laurus.UiTest.WebDriver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Laurus.UiTest\Laurus.UiTest.csproj">
       <Project>{ab778236-0b08-45ed-a172-196d1d6cd06a}</Project>
       <Name>Laurus.UiTest</Name>
