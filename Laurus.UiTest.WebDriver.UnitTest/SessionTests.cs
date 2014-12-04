@@ -7,19 +7,10 @@ using Xunit;
 
 namespace Laurus.UiTest.WebDriver.UnitTest
 {
-    public class Class1
-    {
+	public class SessionTests
+	{
 		[Fact]
-		public void CreateExpressionLocator()
-		{
-			var el = new ExpressionLocator();
-			el.Add2(f => f.Id == "Test");
-			el.Add(f => f.Id == "hello");
-			el.Add(f => f.Id.Equals("hello"));
-		}
-
-		[Fact]
-		public void Remote()
+		public void Can_Start_Remote_Session()
 		{
 			var s = Server.StartSession("http://apollo:4444");
 			s.Browser.Uri = new Uri("http://thebeekeeper.net");
@@ -32,5 +23,5 @@ namespace Laurus.UiTest.WebDriver.UnitTest
 			//var l = hello.Location;
 			s.Delete();
 		}
-    }
+	}
 }

@@ -45,8 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ElementLocationTests.cs" />
+    <Compile Include="ExpressionParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionTests.cs" />
+    <Compile Include="WebFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Laurus.UiTest.WebDriver\Laurus.UiTest.WebDriver.csproj">

@@ -27,6 +27,7 @@ namespace Laurus.UiTest.WebDriver
 			var queryString = String.Format("element/{0}/submit", _id);
 			_request.Post(queryString);
 		}
+
 		public string Text 
 		{
 			get

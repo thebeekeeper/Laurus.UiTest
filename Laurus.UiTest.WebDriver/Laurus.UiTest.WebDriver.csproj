@@ -44,7 +44,8 @@
   <ItemGroup>
     <Compile Include="Browser.cs" />
     <Compile Include="Element.cs" />
-    <Compile Include="ExpressionLocator.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="LocatorParser.cs" />
     <Compile Include="Finger.cs" />
     <Compile Include="LocatorCriteria.cs" />
     <Compile Include="Mouse.cs" />

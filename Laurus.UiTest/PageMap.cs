@@ -27,7 +27,6 @@ namespace Laurus.UiTest
 		{
 			var propertyExpression = (MemberExpression)control.Body;
 			var key = propertyExpression.Member.Name;
-			//_locators.Add(key, new Locator() { Key = name, Value = value });
 			_locators[key] = new Locator() { Key = name, Value = value };
 		}
 
@@ -35,6 +34,12 @@ namespace Laurus.UiTest
 		{
             AddToMap(control, name.ToString(), value);
 		}
+
+        // TODO: implement this
+		//public void AddToMap(Expression<Func<T, IBaseControl>> control, Expression<Func<UiElement, bool>> locator)
+		//{
+
+		//}
 
         /// <summary>
         /// Adds a control to the page map using the default locator key

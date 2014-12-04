@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,12 @@ namespace Laurus.UiTest.WebDriver
             // value comes back like ELEMENT=0
 			var id = Int32.Parse(status.ELEMENT);
 			return new Element(_request, id);
+		}
+
+        public Element Find(Expression<Func<UiElement, bool>> locator)
+		{
+			var criteria = new LocatorParser().Parse(locator);
+			return Locate(criteria);
 		}
 
 		public IEnumerable<Element> LocateObjects(object locator) { return null; }

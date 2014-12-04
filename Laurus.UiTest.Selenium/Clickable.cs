@@ -22,7 +22,16 @@ namespace Laurus.UiTest.Selenium
 			this.GetNative().Click();
 		}
 
-		public string Text { get { return this.GetNative().Text; } }
+		public string Text 
+		{
+			get
+			{
+				var t = GetNative().Text;
+				if (String.IsNullOrEmpty(t))
+					t = GetNative().GetAttribute("name");
+				return t;
+			}
+		}
 
 		public void Tap()
 		{

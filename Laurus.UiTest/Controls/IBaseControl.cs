@@ -9,7 +9,6 @@ namespace Laurus.UiTest.Controls
 	public interface IBaseControl
 	{
 		void Find(ILocator locator);
-
 		bool IsVisible();
 		bool IsEnabled();
 	}

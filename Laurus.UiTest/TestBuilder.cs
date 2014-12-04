@@ -63,7 +63,9 @@ namespace Laurus.UiTest
 		{
 			test.SelectMapsBy(mapType =>
 			{
-				var attr = mapType.GetCustomAttributes(typeof(PlatformAttribute), false);
+                // NOTE: we _should_ be looking for base class attributes in case a user wants 
+				// to create a base page map class which is useful for adding helper mapping methods
+				var attr = mapType.GetCustomAttributes(typeof(PlatformAttribute), true);
 				if (attr.Any())
 				{
 					return ((PlatformAttribute)attr.First()).Platfom.Equals(platformName);
