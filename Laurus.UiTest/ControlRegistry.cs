@@ -37,13 +37,7 @@ namespace Laurus.UiTest
 
 		void IControlRegistry.RegisterLocalControls()
 		{
-            // TODO: auto discover controls and register them
-			//controlReg.RegisterControl<IBaseControl, BaseControl>();
-			//controlReg.RegisterControl<IEditable, Editable>();
-			//controlReg.RegisterControl<IClickable, Clickable>();
-			//controlReg.RegisterControl<IStatic, Static>();
-			//controlReg.RegisterControl<ISelect, Select>();
-			var dirAssemblies = Directory.GetFiles(".", "*.dll");
+			var dirAssemblies = Directory.GetFiles(".", "Laurus.UiTest*.dll");
 			foreach (var d in dirAssemblies)
 			{
 				var assembly = Assembly.LoadFrom(d);
